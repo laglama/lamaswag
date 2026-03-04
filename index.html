@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swag-O-Meter 🔥</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(135deg, #111, #1a1a1a);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .container {
+        background: #222;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 0 30px rgba(255,0,150,0.4);
+        width: 350px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        background: linear-gradient(90deg, #ff00cc, #3333ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        margin-bottom: 20px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        background: linear-gradient(90deg, #ff00cc, #3333ff);
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        transform: scale(1.1);
+    }
+
+    .meter-container {
+        margin-top: 30px;
+        height: 25px;
+        background: #444;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .meter {
+        height: 100%;
+        width: 0%;
+        border-radius: 20px;
+        transition: width 1s ease-in-out;
+        background: linear-gradient(90deg, #00ff99, #00ccff);
+    }
+
+    .result {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .emoji {
+        font-size: 40px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🔥 Swag-O-Meter 🔥</h1>
+    <input type="text" id="nameInput" placeholder="Enter your name">
+    <button onclick="calculateSwag()">Check My Swag</button>
+
+    <div class="meter-container">
+        <div class="meter" id="meterBar"></div>
+    </div>
+
+    <div class="result" id="resultText"></div>
+    <div class="emoji" id="emoji"></div>
+</div>
+
+<script>
+function calculateSwag() {
+    const name = document.getElementById("nameInput").value.trim();
+    const meter = document.getElementById("meterBar");
+    const result = document.getElementById("resultText");
+    const emoji = document.getElementById("emoji");
+
+    if(name === "") {
+        alert("Enter your legendary name first 😎");
+        return;
+    }
+
+    // Generate consistent swag score based on name
+    let score = 0;
+    for(let i = 0; i < name.length; i++) {
+        score += name.charCodeAt(i);
+    }
+    score = score % 101;
+
+    meter.style.width = score + "%";
+
+    let message = "";
+    let face = "";
+
+    if(score < 25) {
+        message = "Swag Level: Basic Civilian";
+        face = "🙂";
+        meter.style.background = "linear-gradient(90deg, #777, #999)";
+    } 
+    else if(score < 50) {
+        message = "Swag Level: Rising Star ⭐";
+        face = "😎";
+        meter.style.background = "linear-gradient(90deg, #00ff99, #00ccff)";
+    } 
+    else if(score < 75) {
+        message = "Swag Level: Certified Drip 💧";
+        face = "🔥";
+        meter.style.background = "linear-gradient(90deg, #ff9900, #ff3300)";
+    } 
+    else {
+        message = "Swag Level: LEGENDARY ICON 👑";
+        face = "👑";
+        meter.style.background = "linear-gradient(90deg, #ff00cc, #6600ff)";
+    }
+
+    result.innerText = message + " (" + score + "%)";
+    emoji.innerText = face;
+}
+</script>
+
+</body>
+</html>
