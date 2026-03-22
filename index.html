@@ -3,141 +3,252 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lkhamaa Monsor Portfolio 👾</title>
+<title>Design & Meaning | Lkhamaa Monsor</title>
 
 <style>
 body {
     margin: 0;
-    font-family: Arial;
-    background: linear-gradient(135deg, #0f2027, #2c5364);
-    color: white;
+    font-family: "Georgia", serif;
+    background: #f5f5f5;
+    color: #222;
 }
 
 /* NAV */
 nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
     display: flex;
     justify-content: space-between;
-    padding: 15px;
-    background: rgba(0,0,0,0.6);
+    padding: 15px 30px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
 nav a {
-    color: white;
     margin: 0 10px;
     cursor: pointer;
-    text-decoration: none;
 }
 
 /* SECTIONS */
 .section {
     display: none;
-    padding: 40px;
-    text-align: center;
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: auto;
 }
 
 .active {
     display: block;
 }
 
-/* MASCOT */
-.mascot {
-    width: 120px;
-    margin: 20px;
-    animation: float 2s infinite;
+/* INTRO PAGE */
+#introPage {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #C2C395;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden;
 }
 
-@keyframes float {
-    0% { transform: translateY(0);}
-    50% { transform: translateY(-10px);}
-    100% { transform: translateY(0);}
+#introPage::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("https://grainy-gradients.vercel.app/noise.svg");
+    opacity: 0.2;
 }
 
-.card {
-    background: rgba(255,255,255,0.1);
+#introPage::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(circle at 30% 40%, #818263 2px, transparent 2px),
+        radial-gradient(circle at 70% 60%, #818263 1.5px, transparent 2px);
+    background-size: 80px 80px;
+    opacity: 0.25;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+.blob1 {
+    width: 300px;
+    height: 300px;
+    background: #aeb07f;
+    top: 10%;
+    left: 10%;
+}
+
+.blob2 {
+    width: 250px;
+    height: 250px;
+    background: #8e9070;
+    bottom: 10%;
+    right: 10%;
+}
+
+.intro-container {
+    position: relative;
+    max-width: 700px;
+    padding: 40px;
+    text-align: center;
+    color: #2e2e2e;
+}
+
+.intro-container h1 {
+    font-size: 38px;
+}
+
+.intro-container p {
+    line-height: 1.8;
+}
+
+.intro-container button {
+    margin-top: 25px;
+    padding: 12px 30px;
+    background: #818263;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* PALETTE */
+.palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.palette .card {
     padding: 20px;
-    margin: 15px auto;
+    border-radius: 20px;
+}
+
+/* BAR */
+.bar {
+    display: flex;
+    height: 30px;
+    margin: 20px 0;
+}
+
+.small { flex: 1; background: #aaa; }
+.large { flex: 1.618; background: #333; }
+
+img {
+    width: 100%;
     border-radius: 10px;
-    max-width: 500px;
-}
-
-.image {
-    width: 80%;
-    border-radius: 15px;
-    margin-top: 20px;
-}
-
-/* MOBILE */
-@media (max-width:600px) {
-    nav {
-        flex-direction: column;
-        text-align: center;
-    }
+    margin-top: 15px;
 }
 </style>
-
 </head>
 
 <body>
 
+<!-- INTRO -->
+<div id="introPage">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+
+    <div class="intro-container">
+        <h1>Design & Meaning</h1>
+        <p>
+        im making this site because i believe that the only thing that seperates us as intelligent beings is our appreciation for aesthetics.
+        it surrounds us, the simple symmetry of buildings, the golden ratios in every touch of nature are all things that move us and therefore make our meaning.
+        i wanted to use this site to help people gain a small understanding into how everything as small as color affect us.
+        </p>
+        <button onclick="enterSite()">Proceed →</button>
+    </div>
+</div>
+
 <!-- NAV -->
 <nav>
-    <h2>👾 Unilord</h2>
+    <div>Lkhamaa Monsor</div>
     <div>
-        <a onclick="showPage('home')">Home</a>
-        <a onclick="showPage('about')">About</a>
-        <a onclick="showPage('projects')">Projects</a>
+        <a onclick="showPage('ratios')">Ratios</a>
+        <a onclick="showPage('colors')">Colors</a>
+        <a onclick="showPage('examples')">Examples</a>
     </div>
 </nav>
 
-<!-- HOME -->
-<div id="home" class="section active">
-    <h1>Lkhamaa Monsor</h1>
-    <p>Class 12C 🎓</p>
-    <p>Art 🎨 | Design 💻 | Fencing ⚔️</p>
+<!-- RATIOS -->
+<div id="ratios" class="section active">
+    <h1>📐 Ratios & Proportions</h1>
 
-    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" class="mascot">
+    <p>Humans are drawn to balance and patterns.</p>
 
-    <p>"I created this website to inspire people to follow their dreams."</p>
+    <h3>Golden Ratio</h3>
+    <div class="bar">
+        <div class="small"></div>
+        <div class="large"></div>
+    </div>
+    <p>Creates harmony and natural beauty.</p>
+
+    <h3>Parallel Lines</h3>
+    <p>Create order and separation.</p>
+
+    <h3>Symmetry</h3>
+    <p>Associated with beauty and stability.</p>
 </div>
 
-<!-- ABOUT -->
-<div id="about" class="section">
-    <h1>About Me</h1>
+<!-- COLORS -->
+<div id="colors" class="section">
+    <h1>🎨 Color Theory</h1>
 
-    <p>Hi! I'm <strong>Lkhamaa Monsor</strong>.</p>
-    <p>I love art and design because it allows me to express creativity.</p>
-    <p>I am also a fencer ⚔️, which teaches discipline and focus.</p>
+    <div class="palette">
+        <div class="card" style="background:#C9B6BE">#C9B6BE</div>
+        <div class="card" style="background:#6F8F3E">#6F8F3E</div>
+        <div class="card" style="background:#8FA3AD">#8FA3AD</div>
+        <div class="card" style="background:#D94F04">#D94F04</div>
+    </div>
 
-    <img src="https://cdn.pixabay.com/photo/2017/08/06/10/24/fencing-2591195_1280.jpg" class="image">
+    <p>Color directly affects emotion and behavior.</p>
 </div>
 
-<!-- PROJECTS -->
-<div id="projects" class="section">
-    <h1>Projects & Achievements</h1>
+<!-- EXAMPLES -->
+<div id="examples" class="section">
+    <h1>🎬 Design in Real Life</h1>
 
-    <div class="card">
-        <h3>🎨 Art & Design</h3>
-        <p>I enjoy creating visual designs and exploring creativity.</p>
-    </div>
+    <h3>Monet</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
+    <p>Soft colors create calmness.</p>
 
-    <div class="card">
-        <h3>⚔️ Fencing</h3>
-        <p>Fencing improved my discipline and strategy skills.</p>
-    </div>
+    <h3>Van Gogh</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
+    <p>Motion and contrast create emotion.</p>
 
-    <div class="card">
-        <h3>💻 University Helper Website</h3>
-        <p>This website helps students avoid mistakes in applications.</p>
-    </div>
+    <h3>Horror Poster</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
+    <p>Darkness creates fear.</p>
 
-    <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/design-1868728_1280.jpg" class="image">
+    <h3>Coca-Cola</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
+    <p>Red creates excitement and appetite.</p>
 </div>
 
 <script>
-function showPage(pageId) {
-    let sections = document.querySelectorAll(".section");
-    sections.forEach(sec => sec.classList.remove("active"));
-    document.getElementById(pageId).classList.add("active");
+function showPage(page) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.getElementById(page).classList.add("active");
+}
+
+function enterSite() {
+    let intro = document.getElementById("introPage");
+    intro.style.transition = "1s";
+    intro.style.opacity = "0";
+    setTimeout(() => intro.style.display = "none", 1000);
 }
 </script>
 
