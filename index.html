@@ -3,210 +3,236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Design & Meaning | Lkhamaa Monsor</title>
+<title>Design & Meaning — Lkhamaa Monsor</title>
 
 <style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: "Georgia", serif;
-    background: #f5f5f5;
-    color: #222;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    background: #f7f7f2;
+    color: #1a1a1a;
+    line-height: 1.6;
 }
 
 /* NAV */
 nav {
     position: fixed;
-    width: 100%;
     top: 0;
+    width: 100%;
+    background: rgba(247,247,242,0.8);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
-    padding: 15px 30px;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(10px);
+    padding: 20px 40px;
     z-index: 1000;
+    border-bottom: 1px solid #ddd;
+}
+
+nav h1 {
+    font-size: 16px;
+    letter-spacing: 1px;
 }
 
 nav a {
-    margin: 0 10px;
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
     cursor: pointer;
 }
 
 /* HERO */
 .hero {
+    padding: 140px 20px 80px;
     background: #C2C395;
-    padding: 120px 20px 80px;
     text-align: center;
 }
 
-.hero h1 {
-    font-size: 32px;
+.hero p {
     max-width: 800px;
     margin: auto;
-    line-height: 1.6;
+    font-size: 18px;
 }
 
 /* SECTIONS */
 .section {
-    display: none;
-    padding: 60px 20px;
+    padding: 80px 20px;
     max-width: 900px;
     margin: auto;
 }
 
-.active {
-    display: block;
+.section h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
 }
 
-/* PALETTE */
+/* TECHNIQUES */
+.tech {
+    margin-bottom: 40px;
+}
+
+.diagram {
+    margin: 15px 0;
+}
+
+/* GOLDEN */
+.golden {
+    display: flex;
+    height: 40px;
+}
+.golden div:first-child { flex: 1; background: #bbb; }
+.golden div:last-child { flex: 1.618; background: #333; }
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 120px;
+}
+.grid div { border: 1px solid #333; }
+
+/* TRIANGLE */
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 100px solid #333;
+    margin: auto;
+}
+
+/* COLORS */
 .palette {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+    gap: 10px;
 }
 
-.palette .card {
-    padding: 20px;
-    border-radius: 20px;
+.swatch {
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
 }
 
-/* BAR */
-.bar {
-    display: flex;
-    height: 30px;
-    margin: 20px 0;
-}
-
-.small { flex: 1; background: #aaa; }
-.large { flex: 1.618; background: #333; }
-
+/* IMAGES */
 img {
     width: 100%;
-    border-radius: 10px;
     margin-top: 15px;
+    border-radius: 10px;
 }
 
-/* MOBILE */
-@media (max-width:600px){
-    nav {
-        flex-direction: column;
-        text-align: center;
-    }
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    font-size: 12px;
+    color: #666;
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAV -->
 <nav>
-    <div>Lkhamaa Monsor</div>
+    <h1>Lkhamaa Monsor</h1>
     <div>
-        <a onclick="showPage('ratios')">Ratios</a>
-        <a onclick="showPage('colors')">Colors</a>
-        <a onclick="showPage('examples')">Examples</a>
+        <a href="#techniques">Techniques</a>
+        <a href="#colors">Colors</a>
+        <a href="#examples">Examples</a>
     </div>
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-    <h1>
-    I believe that the only thing that separates us as intelligent beings is our appreciation for aesthetics. 
-    It surrounds us — from the symmetry of buildings to the golden ratios in nature. 
-    These elements move us, shape meaning, and influence how we feel. 
-    This site explores how even something as simple as color can affect the human mind.
-    </h1>
-</div>
-
-<!-- RATIOS -->
-<div id="ratios" class="section active">
-    <h1>📐 Ratios & Proportions</h1>
-
+<section class="hero">
     <p>
-    Humans are naturally drawn to patterns and structure. The brain searches for balance and order in everything we see.
+    I believe that the only thing that separates us as intelligent beings is our appreciation for aesthetics.
+    It surrounds us — from the symmetry of buildings to the golden ratios in nature.
+    These elements move us and shape meaning.
+    This site explores how design affects the human mind.
     </p>
+</section>
 
-    <h3>Golden Ratio</h3>
-    <div class="bar">
-        <div class="small"></div>
-        <div class="large"></div>
+<!-- TECHNIQUES -->
+<section id="techniques" class="section">
+    <h2>Design Techniques</h2>
+
+    <div class="tech">
+        <h3>Golden Ratio</h3>
+        <div class="diagram golden">
+            <div></div><div></div>
+        </div>
+        <p>Creates harmony because the brain recognizes natural proportions.</p>
     </div>
-    <p>
-    The golden ratio appears in nature, so the brain recognizes it as natural and harmonious. 
-    It reduces visual stress and makes designs feel effortless.
-    </p>
 
-    <h3>Parallel Lines</h3>
-    <p>
-    Parallel lines create separation and structure. They help the brain organize information clearly.
-    </p>
+    <div class="tech">
+        <h3>Rule of Thirds</h3>
+        <div class="diagram grid">
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+            <div></div><div></div><div></div>
+        </div>
+        <p>Guides attention and creates balanced compositions.</p>
+    </div>
 
-    <h3>Symmetry</h3>
-    <p>
-    Symmetry is associated with beauty, stability, and safety. The brain processes symmetrical designs faster.
-    </p>
-</div>
+    <div class="tech">
+        <h3>Triangular Composition</h3>
+        <div class="diagram triangle"></div>
+        <p>Creates stability and keeps the eye moving.</p>
+    </div>
+
+    <div class="tech">
+        <h3>Contrast</h3>
+        <p>Differences in light or size create focus and emotional intensity.</p>
+    </div>
+
+</section>
 
 <!-- COLORS -->
-<div id="colors" class="section">
-    <h1>🎨 Color Theory</h1>
+<section id="colors" class="section">
+    <h2>Color & Emotion</h2>
 
     <div class="palette">
-        <div class="card" style="background:#C9B6BE">#C9B6BE</div>
-        <div class="card" style="background:#6F8F3E">#6F8F3E</div>
-        <div class="card" style="background:#8FA3AD">#8FA3AD</div>
-        <div class="card" style="background:#D94F04">#D94F04</div>
+        <div class="swatch" style="background:#C9B6BE">#C9B6BE</div>
+        <div class="swatch" style="background:#6F8F3E">#6F8F3E</div>
+        <div class="swatch" style="background:#8FA3AD">#8FA3AD</div>
+        <div class="swatch" style="background:#D94F04">#D94F04</div>
     </div>
 
     <p>
-    Color is processed faster than text by the brain. It directly influences emotion and behavior.
+    Color is processed faster than text. Warm colors create energy, while cool colors create calm.
+    Designers use this to influence emotion and behavior.
     </p>
 
-    <h3>Warm Colors</h3>
-    <p>
-    Red, orange, and yellow increase energy and excitement. They stimulate the brain and grab attention.
-    </p>
-
-    <h3>Cool Colors</h3>
-    <p>
-    Blue and green calm the mind and create a sense of trust and stability.
-    </p>
-</div>
+</section>
 
 <!-- EXAMPLES -->
-<div id="examples" class="section">
-    <h1>🎬 Design in Real Life</h1>
+<section id="examples" class="section">
+    <h2>Design in Practice</h2>
 
-    <h3>Claude Monet</h3>
+    <h3>Monet</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
-    <p>
-    Soft colors and blurred edges mimic natural perception, creating calmness and reducing mental strain.
-    </p>
+    <p>Soft colors create calm and reduce visual stress.</p>
 
     <h3>Van Gogh</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
-    <p>
-    Strong contrast and motion create emotional intensity and stimulate the brain.
-    </p>
+    <p>Movement and contrast create emotional intensity.</p>
 
     <h3>Horror Poster</h3>
     <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
-    <p>
-    Darkness and isolation create fear because the brain fears what it cannot fully see.
-    </p>
+    <p>Darkness increases fear by hiding information.</p>
 
-    <h3>Coca-Cola Advertisement</h3>
+    <h3>Coca-Cola</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
-    <p>
-    Red stimulates excitement and appetite, making the product more appealing.
-    </p>
-</div>
+    <p>Red stimulates attention and appetite.</p>
 
-<script>
-function showPage(page) {
-    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-    document.getElementById(page).classList.add("active");
-}
-</script>
+</section>
+
+<footer>
+    © Lkhamaa Monsor — Design Study
+</footer>
 
 </body>
 </html>
