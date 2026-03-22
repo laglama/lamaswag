@@ -6,413 +6,292 @@
 <title>Design & Meaning — Lkhamaa Monsor</title>
 
 <style>
+
 /* RESET */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
     font-family: "Helvetica Neue", Arial, sans-serif;
-    background: #f7f7f2;
-    color: #1a1a1a;
-    line-height: 1.6;
+    background:#f4f4ef;
+    color:#111;
 }
 
 /* NAV */
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(247,247,242,0.8);
-    backdrop-filter: blur(10px);
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 40px;
-    z-index: 1000;
-    border-bottom: 1px solid #ddd;
-}
-
-nav h1 {
-    font-size: 16px;
-    letter-spacing: 1px;
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    background:rgba(244,244,239,0.7);
+    backdrop-filter:blur(10px);
+    z-index:1000;
 }
 
 nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
+    margin-left:20px;
+    text-decoration:none;
+    font-size:14px;
+    color:#222;
 }
 
 /* HERO */
 .hero {
-    padding: 140px 20px 80px;
-    background: #C2C395;
-    text-align: center;
+    padding:160px 20px 120px;
+    max-width:900px;
+    margin:auto;
 }
 
-.hero p {
-    max-width: 800px;
-    margin: auto;
-    font-size: 18px;
+.hero h1 {
+    font-size:42px;
+    font-weight:300;
+    line-height:1.4;
 }
 
-/* SECTIONS */
+/* SECTION BASE */
 .section {
-    padding: 80px 20px;
-    max-width: 900px;
-    margin: auto;
+    max-width:1100px;
+    margin:120px auto;
+    padding:0 20px;
 }
 
+/* SPLIT LAYOUT */
+.split {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:80px;
+}
+
+/* TITLE */
 .section h2 {
-    margin-bottom: 20px;
-    font-size: 28px;
+    font-size:28px;
+    margin-bottom:20px;
 }
 
-/* TECHNIQUES */
-.tech {
-    margin-bottom: 40px;
+/* TEXT */
+p {
+    font-size:15px;
+    color:#333;
 }
 
+/* DIAGRAMS */
 .diagram {
-    margin: 15px 0;
+    margin-top:20px;
 }
 
-/* GOLDEN */
 .golden {
-    display: flex;
-    height: 40px;
+    display:flex;
+    height:50px;
 }
-.golden div:first-child { flex: 1; background: #bbb; }
-.golden div:last-child { flex: 1.618; background: #333; }
+.golden div:first-child { flex:1; background:#bbb; }
+.golden div:last-child { flex:1.618; background:#222; }
 
-/* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    height: 120px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    height:140px;
 }
-.grid div { border: 1px solid #333; }
+.grid div { border:1px solid #222; }
 
-/* TRIANGLE */
-.triangle {
-    width: 0;
-    height: 0;
-    border-left: 60px solid transparent;
-    border-right: 60px solid transparent;
-    border-bottom: 100px solid #333;
-    margin: auto;
+/* COLOR BLOCK */
+.color-row {
+    display:flex;
+    margin-top:20px;
 }
 
-/* COLORS */
-.palette {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-    gap: 10px;
+.color-row div {
+    flex:1;
+    padding:40px;
+    font-size:12px;
+    color:white;
 }
 
-.swatch {
-    padding: 30px;
-    border-radius: 10px;
-    color: white;
-    font-size: 12px;
+/* CONTEXT */
+.context {
+    margin-top:40px;
 }
 
-/* IMAGES */
-img {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 10px;
+.context-block {
+    margin-bottom:40px;
+}
+
+.context-visual {
+    display:flex;
+    height:80px;
+    margin-bottom:10px;
+}
+
+.context-visual div { flex:1; }
+
+/* FILM */
+.film {
+    max-width:800px;
+}
+
+.film h3 {
+    margin-top:30px;
 }
 
 /* FOOTER */
 footer {
-    text-align: center;
-    padding: 40px;
-    font-size: 12px;
-    color: #666;
+    margin:120px 0;
+    text-align:center;
+    font-size:12px;
 }
+
+/* MOBILE */
+@media(max-width:800px){
+    .split {
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .hero h1 {
+        font-size:28px;
+    }
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-    <h1>Lkhamaa Monsor</h1>
+    <div>Lkhamaa Monsor</div>
     <div>
         <a href="#techniques">Techniques</a>
-        <a href="#colors">Colors</a>
-        <a href="#examples">Examples</a>
+        <a href="#color">Color</a>
+        <a href="#film">Story</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <p>
-    I believe that the only thing that separates us as intelligent beings is our appreciation for aesthetics.
-    It surrounds us — from the symmetry of buildings to the golden ratios in nature.
-    These elements move us and shape meaning.
-    This site explores how design affects the human mind.
-    </p>
+    <h1>
+    I believe the only thing that separates us as intelligent beings is our appreciation for aesthetics.
+    From symmetry in buildings to color in storytelling, design shapes how we feel, think, and understand the world.
+    </h1>
 </section>
 
 <!-- TECHNIQUES -->
-<section id="techniques" class="section">
-    <h2>Design Techniques</h2>
+<section id="techniques" class="section split">
 
-    <div class="tech">
-        <h3>Golden Ratio</h3>
+    <div>
+        <h2>Composition</h2>
+        <p>
+        The human brain searches for structure. Techniques like proportion, balance, and alignment guide perception and reduce cognitive strain.
+        </p>
+    </div>
+
+    <div>
+
+        <p><strong>Golden Ratio</strong></p>
         <div class="diagram golden">
             <div></div><div></div>
         </div>
-        <p>Creates harmony because the brain recognizes natural proportions.</p>
-    </div>
 
-    <div class="tech">
-        <h3>Rule of Thirds</h3>
+        <p><strong>Rule of Thirds</strong></p>
         <div class="diagram grid">
             <div></div><div></div><div></div>
             <div></div><div></div><div></div>
             <div></div><div></div><div></div>
         </div>
-        <p>Guides attention and creates balanced compositions.</p>
-    </div>
 
-    <div class="tech">
-        <h3>Triangular Composition</h3>
-        <div class="diagram triangle"></div>
-        <p>Creates stability and keeps the eye moving.</p>
-    </div>
-
-    <div class="tech">
-        <h3>Contrast</h3>
-        <p>Differences in light or size create focus and emotional intensity.</p>
     </div>
 
 </section>
 
-<!-- COLORS -->
-<section id="colors" class="section">
-    <h2>Color & Emotion</h2>
+<!-- COLOR -->
+<section id="color" class="section split">
 
-    <div class="palette">
-        <div class="swatch" style="background:#C9B6BE">#C9B6BE</div>
-        <div class="swatch" style="background:#6F8F3E">#6F8F3E</div>
-        <div class="swatch" style="background:#8FA3AD">#8FA3AD</div>
-        <div class="swatch" style="background:#D94F04">#D94F04</div>
+    <div>
+        <h2>Color & Emotion</h2>
+        <p>
+        Color is processed faster than text and directly influences emotional response.
+        Warm tones stimulate, while cool tones calm. Designers use this to control perception.
+        </p>
     </div>
 
-    <p>
-    Color is processed faster than text. Warm colors create energy, while cool colors create calm.
-    Designers use this to influence emotion and behavior.
-    </p>
+    <div>
+
+        <div class="color-row">
+            <div style="background:#E63946">#E63946</div>
+            <div style="background:#F77F00">#F77F00</div>
+            <div style="background:#FFBE0B;color:black">#FFBE0B</div>
+        </div>
+
+        <div class="color-row">
+            <div style="background:#457B9D">#457B9D</div>
+            <div style="background:#2A9D8F">#2A9D8F</div>
+            <div style="background:#6A4C93">#6A4C93</div>
+        </div>
+
+    </div>
 
 </section>
 
-<!-- EXAMPLES -->
-<section id="examples" class="section">
-    <h2>Design in Practice</h2>
+<!-- CONTEXT -->
+<section class="section">
 
-    <h3>Monet</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
-    <p>Soft colors create calm and reduce visual stress.</p>
+<h2>Color in Context</h2>
 
-    <h3>Van Gogh</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
-    <p>Movement and contrast create emotional intensity.</p>
+<div class="context">
 
-    <h3>Horror Poster</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
-    <p>Darkness increases fear by hiding information.</p>
+<div class="context-block">
+<div class="context-visual">
+<div style="background:#1B1B2F"></div>
+<div style="background:#E63946"></div>
+</div>
+<p><strong>Horror</strong> — darkness + red creates fear and tension</p>
+</div>
 
-    <h3>Coca-Cola</h3>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
-    <p>Red stimulates attention and appetite.</p>
+<div class="context-block">
+<div class="context-visual">
+<div style="background:#457B9D"></div>
+<div style="background:#A8DADC"></div>
+</div>
+<p><strong>Calm</strong> — cool tones reduce stress</p>
+</div>
+
+<div class="context-block">
+<div class="context-visual">
+<div style="background:#FFBE0B"></div>
+<div style="background:#3A86FF"></div>
+<div style="background:#E63946"></div>
+</div>
+<p><strong>Playful</strong> — triadic colors create energy</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- FILM -->
+<section id="film" class="section film">
+
+<h2>Color Storytelling</h2>
+
+<p>
+Color communicates narrative. In film, palettes define identity, emotion, and transformation.
+</p>
+
+<h3>La La Land</h3>
+
+<p>
+Mia is associated with blue (longing), Sebastian with red (passion). 
+Their connection appears in purple — a blend of both identities.
+</p>
+
+<p>
+As the story progresses, saturation fades, reflecting emotional realism replacing fantasy.
+</p>
 
 </section>
 
 <footer>
-    © Lkhamaa Monsor — Design Study
+Design Study — Lkhamaa Monsor
 </footer>
 
 </body>
 </html>
-<section class="section">
-    <h2>Color in Context</h2>
-    <p>
-    Color is not just theory — it directly shapes how we feel in real situations. 
-    Below are examples of how color combinations influence emotion and perception.
-    </p>
-
-    <!-- HORROR -->
-    <div class="context-block">
-        <div class="context-visual">
-            <div style="background:#1B1B2F"></div>
-            <div style="background:#E63946"></div>
-        </div>
-        <div class="context-text">
-            <h3>Horror Scene</h3>
-            <p><strong>Colors:</strong> #1B1B2F + #E63946</p>
-            <p>
-            Dark tones reduce visibility, creating uncertainty. 
-            The red introduces danger and tension, triggering fear responses in the brain.
-            </p>
-        </div>
-    </div>
-
-    <!-- CALM -->
-    <div class="context-block">
-        <div class="context-visual">
-            <div style="background:#457B9D"></div>
-            <div style="background:#A8DADC"></div>
-        </div>
-        <div class="context-text">
-            <h3>Relaxing Landscape</h3>
-            <p><strong>Colors:</strong> #457B9D + #A8DADC</p>
-            <p>
-            Analogous cool tones create harmony. 
-            Blue tones slow heart rate and reduce stress, producing calm and stability.
-            </p>
-        </div>
-    </div>
-
-    <!-- PLAYFUL -->
-    <div class="context-block">
-        <div class="context-visual">
-            <div style="background:#FFBE0B"></div>
-            <div style="background:#3A86FF"></div>
-            <div style="background:#E63946"></div>
-        </div>
-        <div class="context-text">
-            <h3>Playful Design</h3>
-            <p><strong>Colors:</strong> #FFBE0B + #3A86FF + #E63946</p>
-            <p>
-            Triadic colors create strong contrast while staying balanced. 
-            This combination stimulates the brain, creating excitement and playfulness.
-            </p>
-        </div>
-    </div>
-
-</section>
-<section id="colors" class="section">
-    <h2>Color Systems & Emotional Impact</h2>
-
-    <div class="color-group">
-        <h3>Warm Palette</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#E63946">#E63946</div>
-            <div class="swatch" style="background:#F77F00">#F77F00</div>
-            <div class="swatch" style="background:#FFBE0B; color:#000">#FFBE0B</div>
-        </div>
-        <p>Energy, passion, warmth, excitement</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Cool Palette</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#457B9D">#457B9D</div>
-            <div class="swatch" style="background:#2A9D8F">#2A9D8F</div>
-            <div class="swatch" style="background:#6A4C93">#6A4C93</div>
-        </div>
-        <p>Calm, trust, serenity</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Monochromatic</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#1D3557">#1D3557</div>
-            <div class="swatch" style="background:#457B9D">#457B9D</div>
-            <div class="swatch" style="background:#A8DADC; color:#000">#A8DADC</div>
-        </div>
-        <p>Harmony, simplicity, minimalism</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Analogous</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#8AC926; color:#000">#8AC926</div>
-            <div class="swatch" style="background:#FFCA3A; color:#000">#FFCA3A</div>
-            <div class="swatch" style="background:#FF924C">#FF924C</div>
-        </div>
-        <p>Cohesive, natural, comfortable</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Complementary</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#3A86FF">#3A86FF</div>
-            <div class="swatch" style="background:#FB5607">#FB5607</div>
-        </div>
-        <p>High contrast, tension, attention</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Split Complementary</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#3A86FF">#3A86FF</div>
-            <div class="swatch" style="background:#FFBE0B; color:#000">#FFBE0B</div>
-            <div class="swatch" style="background:#FF006E">#FF006E</div>
-        </div>
-        <p>Dynamic but balanced contrast</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Triadic</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#E63946">#E63946</div>
-            <div class="swatch" style="background:#3A86FF">#3A86FF</div>
-            <div class="swatch" style="background:#FFBE0B; color:#000">#FFBE0B</div>
-        </div>
-        <p>Vibrant, playful, balanced energy</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Pastel</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#FFC8DD; color:#000">#FFC8DD</div>
-            <div class="swatch" style="background:#BDE0FE; color:#000">#BDE0FE</div>
-            <div class="swatch" style="background:#CAFFBF; color:#000">#CAFFBF</div>
-        </div>
-        <p>Soft, gentle, dreamy</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Muted / Earth Tones</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#6B705C">#6B705C</div>
-            <div class="swatch" style="background:#A5A58D">#A5A58D</div>
-            <div class="swatch" style="background:#CB997E">#CB997E</div>
-        </div>
-        <p>Grounded, natural, nostalgic</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Dark / Low-key</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#1B1B2F">#1B1B2F</div>
-            <div class="swatch" style="background:#3F3351">#3F3351</div>
-            <div class="swatch" style="background:#53354A">#53354A</div>
-        </div>
-        <p>Mystery, seriousness, drama</p>
-    </div>
-
-    <div class="color-group">
-        <h3>High Saturation / Neon</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#FF006E">#FF006E</div>
-            <div class="swatch" style="background:#39FF14; color:#000">#39FF14</div>
-            <div class="swatch" style="background:#00F5FF; color:#000">#00F5FF</div>
-        </div>
-        <p>Energy, chaos, intensity</p>
-    </div>
-
-    <div class="color-group">
-        <h3>Black & White</h3>
-        <div class="palette">
-            <div class="swatch" style="background:#000">#000000</div>
-            <div class="swatch" style="background:#fff; color:#000">#FFFFFF</div>
-            <div class="swatch" style="background:#808080">#808080</div>
-        </div>
-        <p>Timeless, dramatic, minimal</p>
-    </div>
-
-</section>
