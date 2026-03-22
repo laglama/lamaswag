@@ -6,8 +6,6 @@
 <title>Design & Meaning — Lkhamaa Monsor</title>
 
 <style>
-
-/* RESET */
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
@@ -49,36 +47,26 @@ nav a {
     line-height:1.4;
 }
 
-/* SECTION BASE */
+/* SECTION */
 .section {
     max-width:1100px;
     margin:120px auto;
     padding:0 20px;
 }
 
-/* SPLIT LAYOUT */
+/* SPLIT */
 .split {
     display:grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns:1fr 1fr;
     gap:80px;
 }
 
-/* TITLE */
-.section h2 {
-    font-size:28px;
-    margin-bottom:20px;
-}
-
 /* TEXT */
-p {
-    font-size:15px;
-    color:#333;
-}
+h2 { font-size:28px; margin-bottom:20px; }
+p { font-size:15px; color:#333; margin-bottom:10px; }
 
 /* DIAGRAMS */
-.diagram {
-    margin-top:20px;
-}
+.diagram { margin:15px 0; }
 
 .golden {
     display:flex;
@@ -94,12 +82,20 @@ p {
 }
 .grid div { border:1px solid #222; }
 
-/* COLOR BLOCK */
+.triangle {
+    width:0;
+    height:0;
+    border-left:70px solid transparent;
+    border-right:70px solid transparent;
+    border-bottom:120px solid #222;
+    margin-top:20px;
+}
+
+/* COLOR */
 .color-row {
     display:flex;
     margin-top:20px;
 }
-
 .color-row div {
     flex:1;
     padding:40px;
@@ -108,12 +104,8 @@ p {
 }
 
 /* CONTEXT */
-.context {
-    margin-top:40px;
-}
-
 .context-block {
-    margin-bottom:40px;
+    margin:40px 0;
 }
 
 .context-visual {
@@ -121,23 +113,17 @@ p {
     height:80px;
     margin-bottom:10px;
 }
-
 .context-visual div { flex:1; }
 
-/* FILM */
-.film {
-    max-width:800px;
+/* EXAMPLES */
+.example {
+    margin:80px 0;
 }
 
-.film h3 {
-    margin-top:30px;
-}
-
-/* FOOTER */
-footer {
-    margin:120px 0;
-    text-align:center;
-    font-size:12px;
+.example img {
+    width:100%;
+    border-radius:10px;
+    margin:20px 0;
 }
 
 /* MOBILE */
@@ -146,88 +132,88 @@ footer {
         grid-template-columns:1fr;
         gap:40px;
     }
-
-    .hero h1 {
-        font-size:28px;
-    }
+    .hero h1 { font-size:28px; }
 }
-
 </style>
 </head>
 
 <body>
 
 <nav>
-    <div>Lkhamaa Monsor</div>
-    <div>
-        <a href="#techniques">Techniques</a>
-        <a href="#color">Color</a>
-        <a href="#film">Story</a>
-    </div>
+<div>Lkhamaa Monsor</div>
+<div>
+<a href="#techniques">Techniques</a>
+<a href="#color">Color</a>
+<a href="#examples">Examples</a>
+</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-    <h1>
-    I believe the only thing that separates us as intelligent beings is our appreciation for aesthetics.
-    From symmetry in buildings to color in storytelling, design shapes how we feel, think, and understand the world.
-    </h1>
+<h1>
+I believe the only thing that separates us as intelligent beings is our appreciation for aesthetics.
+From symmetry in buildings to color in storytelling, design shapes how we feel and understand the world.
+</h1>
 </section>
 
 <!-- TECHNIQUES -->
 <section id="techniques" class="section split">
 
-    <div>
-        <h2>Composition</h2>
-        <p>
-        The human brain searches for structure. Techniques like proportion, balance, and alignment guide perception and reduce cognitive strain.
-        </p>
-    </div>
+<div>
+<h2>Composition</h2>
+<p>The brain seeks structure and balance. These techniques guide perception and emotional response.</p>
 
-    <div>
+<p><strong>Golden Ratio</strong> — harmony, natural flow</p>
+<p><strong>Rule of Thirds</strong> — dynamic balance</p>
+<p><strong>Symmetry</strong> — stability, calm</p>
+<p><strong>Asymmetry</strong> — movement, tension</p>
+<p><strong>Leading Lines</strong> — direction, focus</p>
+<p><strong>Negative Space</strong> — clarity, isolation</p>
+</div>
 
-        <p><strong>Golden Ratio</strong></p>
-        <div class="diagram golden">
-            <div></div><div></div>
-        </div>
+<div>
 
-        <p><strong>Rule of Thirds</strong></p>
-        <div class="diagram grid">
-            <div></div><div></div><div></div>
-            <div></div><div></div><div></div>
-            <div></div><div></div><div></div>
-        </div>
+<div class="diagram golden">
+<div></div><div></div>
+</div>
 
-    </div>
+<div class="diagram grid">
+<div></div><div></div><div></div>
+<div></div><div></div><div></div>
+<div></div><div></div><div></div>
+</div>
+
+<div class="triangle"></div>
+
+</div>
 
 </section>
 
 <!-- COLOR -->
 <section id="color" class="section split">
 
-    <div>
-        <h2>Color & Emotion</h2>
-        <p>
-        Color is processed faster than text and directly influences emotional response.
-        Warm tones stimulate, while cool tones calm. Designers use this to control perception.
-        </p>
-    </div>
+<div>
+<h2>Color & Emotion</h2>
+<p>Color directly affects emotion and perception.</p>
 
-    <div>
+<p><strong>Warm</strong> — energy, passion</p>
+<p><strong>Cool</strong> — calm, trust</p>
+<p><strong>Complementary</strong> — tension</p>
+</div>
 
-        <div class="color-row">
-            <div style="background:#E63946">#E63946</div>
-            <div style="background:#F77F00">#F77F00</div>
-            <div style="background:#FFBE0B;color:black">#FFBE0B</div>
-        </div>
+<div>
+<div class="color-row">
+<div style="background:#E63946">#E63946</div>
+<div style="background:#F77F00">#F77F00</div>
+<div style="background:#FFBE0B;color:black">#FFBE0B</div>
+</div>
 
-        <div class="color-row">
-            <div style="background:#457B9D">#457B9D</div>
-            <div style="background:#2A9D8F">#2A9D8F</div>
-            <div style="background:#6A4C93">#6A4C93</div>
-        </div>
-
-    </div>
+<div class="color-row">
+<div style="background:#457B9D">#457B9D</div>
+<div style="background:#2A9D8F">#2A9D8F</div>
+<div style="background:#6A4C93">#6A4C93</div>
+</div>
+</div>
 
 </section>
 
@@ -236,14 +222,12 @@ footer {
 
 <h2>Color in Context</h2>
 
-<div class="context">
-
 <div class="context-block">
 <div class="context-visual">
 <div style="background:#1B1B2F"></div>
 <div style="background:#E63946"></div>
 </div>
-<p><strong>Horror</strong> — darkness + red creates fear and tension</p>
+<p><strong>Horror</strong> — darkness + red creates fear</p>
 </div>
 
 <div class="context-block">
@@ -251,7 +235,7 @@ footer {
 <div style="background:#457B9D"></div>
 <div style="background:#A8DADC"></div>
 </div>
-<p><strong>Calm</strong> — cool tones reduce stress</p>
+<p><strong>Calm</strong> — cool tones relax the viewer</p>
 </div>
 
 <div class="context-block">
@@ -263,35 +247,44 @@ footer {
 <p><strong>Playful</strong> — triadic colors create energy</p>
 </div>
 
+</section>
+
+<!-- EXAMPLES -->
+<section id="examples" class="section">
+
+<h2>Examples in Practice</h2>
+
+<div class="example">
+<h3>Monet — Impression, Sunrise</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
+<p>Soft colors reduce visual stress and create calm.</p>
+</div>
+
+<div class="example">
+<h3>Van Gogh — Starry Night</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
+<p>Movement and contrast create emotional intensity.</p>
+</div>
+
+<div class="example">
+<h3>Aivazovsky — Ninth Wave</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Aivazovsky_-_The_Ninth_Wave.jpg">
+<p>Scale and light create awe and tension.</p>
+</div>
+
+<div class="example">
+<h3>Horror Poster</h3>
+<img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
+<p>Darkness creates fear through uncertainty.</p>
+</div>
+
+<div class="example">
+<h3>Coca-Cola</h3>
+<img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
+<p>Red stimulates attention and appetite.</p>
 </div>
 
 </section>
-
-<!-- FILM -->
-<section id="film" class="section film">
-
-<h2>Color Storytelling</h2>
-
-<p>
-Color communicates narrative. In film, palettes define identity, emotion, and transformation.
-</p>
-
-<h3>La La Land</h3>
-
-<p>
-Mia is associated with blue (longing), Sebastian with red (passion). 
-Their connection appears in purple — a blend of both identities.
-</p>
-
-<p>
-As the story progresses, saturation fades, reflecting emotional realism replacing fantasy.
-</p>
-
-</section>
-
-<footer>
-Design Study — Lkhamaa Monsor
-</footer>
 
 </body>
 </html>
