@@ -9,96 +9,124 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    background:#f4f4ef;
+    font-family: Arial, sans-serif;
+    background:#f2f2ed;
     color:#111;
 }
 
 /* NAV */
 nav {
     position:fixed;
-    top:0;
     width:100%;
+    top:0;
     display:flex;
     justify-content:space-between;
     padding:20px 40px;
-    background:rgba(244,244,239,0.7);
+    background:rgba(242,242,237,0.8);
     backdrop-filter:blur(10px);
     z-index:1000;
 }
 
-nav a {
-    margin-left:20px;
-    text-decoration:none;
-    font-size:14px;
-    color:#222;
-}
-
 /* HERO */
 .hero {
-    padding:160px 20px 120px;
+    padding:160px 10vw;
     max-width:900px;
-    margin:auto;
 }
 
 .hero h1 {
     font-size:42px;
     font-weight:300;
-    line-height:1.4;
+    line-height:1.5;
 }
 
 /* SECTION */
 .section {
-    max-width:1100px;
-    margin:120px auto;
-    padding:0 20px;
+    padding:120px 10vw;
+    position:relative;
 }
 
-/* SPLIT */
-.split {
+.block {
+    max-width:500px;
+    margin-bottom:80px;
+}
+
+/* OFFSET */
+.offset { margin-left:20vw; }
+.offset2 { margin-left:40vw; }
+
+/* GRID PRINCIPLES */
+.composition-grid {
     display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:80px;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:40px;
 }
-
-/* TEXT */
-h2 { font-size:28px; margin-bottom:20px; }
-p { font-size:15px; color:#333; margin-bottom:10px; }
 
 /* DIAGRAMS */
-.diagram { margin:15px 0; }
-
 .golden {
     display:flex;
     height:50px;
+    margin:20px 0;
 }
-.golden div:first-child { flex:1; background:#bbb; }
-.golden div:last-child { flex:1.618; background:#222; }
+.golden div:first-child { flex:1; background:#aaa; }
+.golden div:last-child { flex:1.618; background:#111; }
 
 .grid {
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    height:140px;
+    height:120px;
+    margin:20px 0;
 }
-.grid div { border:1px solid #222; }
+.grid div { border:1px solid #111; }
 
 .triangle {
     width:0;
     height:0;
     border-left:70px solid transparent;
     border-right:70px solid transparent;
-    border-bottom:120px solid #222;
+    border-bottom:120px solid #111;
+    margin:20px 0;
+}
+
+/* INTERACTIVE IMAGE */
+.image-wrapper {
+    position: relative;
+    width: 80%;
+    margin: 60px auto;
+}
+
+.image-wrapper img {
+    width: 100%;
+}
+
+/* CLICK ZONES */
+.zone {
+    position:absolute;
+    cursor:pointer;
+}
+
+.zone:hover {
+    background:rgba(0,0,0,0.1);
+}
+
+/* INFO BOX */
+#infoBox {
+    margin:20px auto;
+    max-width:400px;
+    font-size:14px;
+}
+
+/* COLORS */
+.palette {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
     margin-top:20px;
 }
 
-/* COLOR */
-.color-row {
-    display:flex;
-    margin-top:20px;
-}
-.color-row div {
-    flex:1;
-    padding:40px;
+.swatch {
+    padding:30px;
+    border-radius:10px;
     font-size:12px;
     color:white;
 }
@@ -115,24 +143,19 @@ p { font-size:15px; color:#333; margin-bottom:10px; }
 }
 .context-visual div { flex:1; }
 
-/* EXAMPLES */
-.example {
-    margin:80px 0;
-}
-
-.example img {
-    width:100%;
-    border-radius:10px;
+/* IMAGES */
+img.art {
+    width:70%;
     margin:20px 0;
+    border-radius:10px;
 }
 
 /* MOBILE */
 @media(max-width:800px){
-    .split {
-        grid-template-columns:1fr;
-        gap:40px;
-    }
-    .hero h1 { font-size:28px; }
+    .offset, .offset2 { margin-left:0; }
+    .composition-grid { grid-template-columns:1fr; }
+    .image-wrapper { width:100%; }
+    img.art { width:100%; }
 }
 </style>
 </head>
@@ -141,78 +164,68 @@ p { font-size:15px; color:#333; margin-bottom:10px; }
 
 <nav>
 <div>Lkhamaa Monsor</div>
-<div>
-<a href="#techniques">Techniques</a>
-<a href="#color">Color</a>
-<a href="#examples">Examples</a>
-</div>
+<div>Design Study</div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 <h1>
 I believe the only thing that separates us as intelligent beings is our appreciation for aesthetics.
-From symmetry in buildings to color in storytelling, design shapes how we feel and understand the world.
+It surrounds us — in symmetry, proportion, and color — shaping meaning and emotion.
 </h1>
 </section>
 
-<!-- TECHNIQUES -->
-<section id="techniques" class="section split">
+<!-- COMPOSITION -->
+<section class="section">
 
-<div>
+<div class="block">
 <h2>Composition</h2>
-<p>The brain seeks structure and balance. These techniques guide perception and emotional response.</p>
-
-<p><strong>Golden Ratio</strong> — harmony, natural flow</p>
-<p><strong>Rule of Thirds</strong> — dynamic balance</p>
-<p><strong>Symmetry</strong> — stability, calm</p>
-<p><strong>Asymmetry</strong> — movement, tension</p>
-<p><strong>Leading Lines</strong> — direction, focus</p>
-<p><strong>Negative Space</strong> — clarity, isolation</p>
+<p>
+Composition is the arrangement of visual elements to create balance, harmony, and focus.
+It determines how a viewer experiences an artwork.
+</p>
 </div>
 
-<div>
-
-<div class="diagram golden">
-<div></div><div></div>
+<div class="composition-grid">
+<div><strong>Balance</strong><p>Distribution of visual weight</p></div>
+<div><strong>Contrast</strong><p>Creates tension</p></div>
+<div><strong>Emphasis</strong><p>Guides attention</p></div>
+<div><strong>Movement</strong><p>Guides the eye</p></div>
+<div><strong>Rhythm</strong><p>Repetition creates flow</p></div>
+<div><strong>Proportion</strong><p>Controls scale</p></div>
 </div>
 
-<div class="diagram grid">
-<div></div><div></div><div></div>
-<div></div><div></div><div></div>
-<div></div><div></div><div></div>
+<!-- INTERACTIVE IMAGE -->
+<div class="image-wrapper">
+
+<img src="composition.png">
+
+<div class="zone" style="top:5%;left:5%;width:28%;height:18%;" onclick="showInfo('Rule of Thirds')"></div>
+<div class="zone" style="top:5%;left:36%;width:28%;height:18%;" onclick="showInfo('Golden Section')"></div>
+<div class="zone" style="top:65%;left:5%;width:28%;height:18%;" onclick="showInfo('Diagonal Composition')"></div>
+
 </div>
 
-<div class="triangle"></div>
-
-</div>
+<div id="infoBox">Click a diagram to learn more</div>
 
 </section>
 
 <!-- COLOR -->
-<section id="color" class="section split">
+<section class="section">
 
-<div>
-<h2>Color & Emotion</h2>
-<p>Color directly affects emotion and perception.</p>
-
-<p><strong>Warm</strong> — energy, passion</p>
-<p><strong>Cool</strong> — calm, trust</p>
-<p><strong>Complementary</strong> — tension</p>
+<div class="block">
+<h2>Color Systems</h2>
+<p>Color affects emotion instantly.</p>
 </div>
 
-<div>
-<div class="color-row">
-<div style="background:#E63946">#E63946</div>
-<div style="background:#F77F00">#F77F00</div>
-<div style="background:#FFBE0B;color:black">#FFBE0B</div>
-</div>
+<div class="palette">
+<div class="swatch" style="background:#E63946">#E63946</div>
+<div class="swatch" style="background:#F77F00">#F77F00</div>
+<div class="swatch" style="background:#FFBE0B;color:black">#FFBE0B</div>
 
-<div class="color-row">
-<div style="background:#457B9D">#457B9D</div>
-<div style="background:#2A9D8F">#2A9D8F</div>
-<div style="background:#6A4C93">#6A4C93</div>
-</div>
+<div class="swatch" style="background:#457B9D">#457B9D</div>
+<div class="swatch" style="background:#2A9D8F">#2A9D8F</div>
+<div class="swatch" style="background:#6A4C93">#6A4C93</div>
 </div>
 
 </section>
@@ -227,7 +240,7 @@ From symmetry in buildings to color in storytelling, design shapes how we feel a
 <div style="background:#1B1B2F"></div>
 <div style="background:#E63946"></div>
 </div>
-<p><strong>Horror</strong> — darkness + red creates fear</p>
+<p>Horror → tension</p>
 </div>
 
 <div class="context-block">
@@ -235,56 +248,48 @@ From symmetry in buildings to color in storytelling, design shapes how we feel a
 <div style="background:#457B9D"></div>
 <div style="background:#A8DADC"></div>
 </div>
-<p><strong>Calm</strong> — cool tones relax the viewer</p>
+<p>Calm → peace</p>
 </div>
 
-<div class="context-block">
-<div class="context-visual">
-<div style="background:#FFBE0B"></div>
-<div style="background:#3A86FF"></div>
-<div style="background:#E63946"></div>
-</div>
-<p><strong>Playful</strong> — triadic colors create energy</p>
-</div>
+</section>
+
+<!-- FILM -->
+<section class="section">
+
+<h2>Color Storytelling</h2>
+<p>
+Color storytelling uses psychology and contrast to define emotion and narrative.
+</p>
+
+<h3>La La Land</h3>
+<p>
+Blue = longing, Red = passion, Purple = connection.
+Color fades as reality sets in.
+</p>
 
 </section>
 
 <!-- EXAMPLES -->
-<section id="examples" class="section">
+<section class="section">
 
-<h2>Examples in Practice</h2>
+<h2>Examples</h2>
 
-<div class="example">
-<h3>Monet — Impression, Sunrise</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
-<p>Soft colors reduce visual stress and create calm.</p>
-</div>
+<h3>Monet</h3>
+<img class="art" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
 
-<div class="example">
-<h3>Van Gogh — Starry Night</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
-<p>Movement and contrast create emotional intensity.</p>
-</div>
+<h3>Van Gogh</h3>
+<img class="art" src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
 
-<div class="example">
-<h3>Aivazovsky — Ninth Wave</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Aivazovsky_-_The_Ninth_Wave.jpg">
-<p>Scale and light create awe and tension.</p>
-</div>
-
-<div class="example">
-<h3>Horror Poster</h3>
-<img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
-<p>Darkness creates fear through uncertainty.</p>
-</div>
-
-<div class="example">
-<h3>Coca-Cola</h3>
-<img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
-<p>Red stimulates attention and appetite.</p>
-</div>
+<h3>Aivazovsky</h3>
+<img class="art" src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Aivazovsky_-_The_Ninth_Wave.jpg">
 
 </section>
+
+<script>
+function showInfo(text){
+    document.getElementById("infoBox").innerText = text;
+}
+</script>
 
 </body>
 </html>
