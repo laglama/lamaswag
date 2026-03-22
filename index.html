@@ -3,155 +3,228 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swag-O-Meter 🔥</title>
+<title>Unilord University Helper 👾🎓</title>
 
 <style>
-    body {
-        margin: 0;
-        font-family: Arial, Helvetica, sans-serif;
-        background: linear-gradient(135deg, #111, #1a1a1a);
-        color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        text-align: center;
-    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    text-align: center;
+}
 
-    .container {
-        background: #222;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 0 30px rgba(255,0,150,0.4);
-        width: 350px;
-    }
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
 
-    h1 {
-        margin-bottom: 20px;
-        font-size: 28px;
-        background: linear-gradient(90deg, #ff00cc, #3333ff);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+h1 {
+    margin-bottom: 5px;
+}
 
-    input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 10px;
-        border: none;
-        margin-bottom: 20px;
-        font-size: 16px;
-        text-align: center;
-    }
+.mascot {
+    margin: 20px auto;
+}
 
-    button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 20px;
-        background: linear-gradient(90deg, #ff00cc, #3333ff);
-        color: white;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+.mascot img {
+    width: 120px;
+    animation: bounce 2s infinite;
+}
 
-    button:hover {
-        transform: scale(1.1);
-    }
+@keyframes bounce {
+    0%,100% { transform: translateY(0);}
+    50% { transform: translateY(-10px);}
+}
 
-    .meter-container {
-        margin-top: 30px;
-        height: 25px;
-        background: #444;
-        border-radius: 20px;
-        overflow: hidden;
-    }
+.speech {
+    background: white;
+    color: black;
+    padding: 10px;
+    border-radius: 15px;
+    display: inline-block;
+    margin-top: 10px;
+    max-width: 300px;
+}
 
-    .meter {
-        height: 100%;
-        width: 0%;
-        border-radius: 20px;
-        transition: width 1s ease-in-out;
-        background: linear-gradient(90deg, #00ff99, #00ccff);
-    }
+.section {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 15px 0;
+    text-align: left;
+}
 
-    .result {
-        margin-top: 15px;
-        font-size: 18px;
-        font-weight: bold;
-    }
+label {
+    display: block;
+    margin: 8px 0;
+}
 
-    .emoji {
-        font-size: 40px;
-        margin-top: 10px;
-    }
+input, textarea, select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    margin-top: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 25px;
+    border-radius: 25px;
+    border: none;
+    background: #00c6ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.result {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.4);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: left;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #333;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00ffcc, #00c6ff);
+    transition: 0.5s;
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-    <h1>🔥 Swag-O-Meter 🔥</h1>
-    <input type="text" id="nameInput" placeholder="Enter your name">
-    <button onclick="calculateSwag()">Check My Swag</button>
+    <h1>👾 Unilord's University Helper 🎓</h1>
+    <p>Your cute guide to getting accepted!</p>
 
-    <div class="meter-container">
-        <div class="meter" id="meterBar"></div>
+    <!-- Mascot -->
+    <div class="mascot">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+        <div class="speech" id="mascotSpeech">
+            Hi! I'm Unilord 👾 Let's build your perfect application!
+        </div>
     </div>
 
-    <div class="result" id="resultText"></div>
-    <div class="emoji" id="emoji"></div>
+    <!-- Form -->
+    <div class="section">
+        <h3>📌 Personal Info</h3>
+        <label>Name <input type="text" id="name"></label>
+        <label>Email <input type="email" id="email"></label>
+    </div>
+
+    <div class="section">
+        <h3>📚 Academics</h3>
+        <label>GPA <input type="number" id="gpa" step="0.1"></label>
+        <label>Test Score <input type="number" id="testScore"></label>
+    </div>
+
+    <div class="section">
+        <h3>📝 Materials</h3>
+        <label><input type="checkbox" id="essay"> Essay Done</label>
+        <label><input type="checkbox" id="rec"> Recommendation Letters</label>
+        <label><input type="checkbox" id="activities"> Activities Listed</label>
+    </div>
+
+    <div class="section">
+        <h3>🎯 Submission</h3>
+        <label>Universities Applied <input type="number" id="unis"></label>
+        <label>Status
+            <select id="submitted">
+                <option value="no">Not Submitted</option>
+                <option value="yes">Submitted</option>
+            </select>
+        </label>
+    </div>
+
+    <button onclick="checkApp()">Check with Unilord 👾</button>
+
+    <div class="result" id="result"></div>
+
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+
 </div>
 
 <script>
-function calculateSwag() {
-    const name = document.getElementById("nameInput").value.trim();
-    const meter = document.getElementById("meterBar");
-    const result = document.getElementById("resultText");
-    const emoji = document.getElementById("emoji");
+function speak(msg) {
+    document.getElementById("mascotSpeech").innerText = msg;
+}
 
-    if(name === "") {
-        alert("Enter your legendary name first 😎");
-        return;
-    }
-
-    // Generate consistent swag score based on name
+function checkApp() {
     let score = 0;
-    for(let i = 0; i < name.length; i++) {
-        score += name.charCodeAt(i);
+    let issues = [];
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let gpa = parseFloat(document.getElementById("gpa").value);
+    let test = parseInt(document.getElementById("testScore").value);
+    let essay = document.getElementById("essay").checked;
+    let rec = document.getElementById("rec").checked;
+    let act = document.getElementById("activities").checked;
+    let unis = parseInt(document.getElementById("unis").value);
+    let submitted = document.getElementById("submitted").value;
+
+    if(!name){ issues.push("Missing name"); speak("Hey! I need your name 👀"); }
+    else score+=10;
+
+    if(!email.includes("@")){ issues.push("Invalid email"); speak("That email looks sus 😬"); }
+    else score+=10;
+
+    if(!gpa || gpa<2.5){ issues.push("Low GPA"); speak("We might need to boost your academics 📚"); }
+    else score+=15;
+
+    if(!test || test<900){ issues.push("Low test score"); speak("Try improving your test score 💪"); }
+    else score+=15;
+
+    if(!essay){ issues.push("Missing essay"); speak("Your story matters! Write that essay ✍️"); }
+    else score+=10;
+
+    if(!rec){ issues.push("No recommendations"); speak("Teachers gotta hype you up 😎"); }
+    else score+=10;
+
+    if(!act){ issues.push("No activities"); speak("Show your personality with activities 🌟"); }
+    else score+=10;
+
+    if(!unis || unis<3){ issues.push("Too few universities"); speak("Apply to more schools 🎯"); }
+    else score+=10;
+
+    if(submitted==="no"){ issues.push("Not submitted"); speak("Don't forget to submit! ⏰"); }
+    else score+=10;
+
+    let resultHTML = "<h3>📊 Unilord's Review</h3>";
+
+    if(issues.length===0){
+        resultHTML += "<p>✅ PERFECT APPLICATION 👑</p>";
+        speak("YOU DID AMAZING!!! I'M PROUD 👾💙");
+    } else {
+        resultHTML += "<ul>";
+        issues.forEach(i=> resultHTML+="<li>❌ "+i+"</li>");
+        resultHTML += "</ul>";
     }
-    score = score % 101;
 
-    meter.style.width = score + "%";
+    resultHTML += "<p><strong>Score: "+score+"%</strong></p>";
 
-    let message = "";
-    let face = "";
-
-    if(score < 25) {
-        message = "Swag Level: Basic Civilian";
-        face = "🙂";
-        meter.style.background = "linear-gradient(90deg, #777, #999)";
-    } 
-    else if(score < 50) {
-        message = "Swag Level: Rising Star ⭐";
-        face = "😎";
-        meter.style.background = "linear-gradient(90deg, #00ff99, #00ccff)";
-    } 
-    else if(score < 75) {
-        message = "Swag Level: Certified Drip 💧";
-        face = "🔥";
-        meter.style.background = "linear-gradient(90deg, #ff9900, #ff3300)";
-    } 
-    else {
-        message = "Swag Level: LEGENDARY ICON 👑";
-        face = "👑";
-        meter.style.background = "linear-gradient(90deg, #ff00cc, #6600ff)";
-    }
-
-    result.innerText = message + " (" + score + "%)";
-    emoji.innerText = face;
+    document.getElementById("result").innerHTML = resultHTML;
+    document.getElementById("progress").style.width = score+"%";
 }
 </script>
 
 </body>
 </html>
+
