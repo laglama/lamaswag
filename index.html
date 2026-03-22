@@ -1,404 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DESIGN PSYCHE • Proportion • Color • Emotion</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap');
-        
-        :root {
-            --phi: 1.618;
-        }
-        
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        .heading-font {
-            font-family: 'Playfair Display', serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DESIGN PSYCHE • Proportion • Color • Emotion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Inter:wght@300;400;500;600&display=swap');
 
-        .nav-link {
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #d97706;
-            transition: width 0.4s ease;
-        }
-        
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 100%;
-        }
+    :root {
+      --nav-height: 4.5rem;
+    }
 
-        .page {
-            animation: fadeIn 0.7s ease forwards;
-        }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      scroll-behavior: smooth;
+    }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    .heading-font {
+      font-family: 'Playfair Display', serif;
+    }
 
-        .swatch {
-            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        .swatch:hover {
-            transform: scale(1.06);
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
-        }
+    .page {
+      animation: fadeIn 0.6s ease-out forwards;
+      opacity: 0;
+    }
 
-        .modal {
-            animation: modalPop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        
-        @keyframes modalPop {
-            0% { transform: scale(0.92); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-        .golden-rect {
-            transition: all 0.5s ease;
-        }
-    </style>
+    /* Mobile-first typography scale */
+    h1 { font-size: clamp(2.5rem, 8vw, 5.5rem); line-height: 1.05; }
+    h2 { font-size: clamp(2.25rem, 6vw, 4rem); }
+    h3 { font-size: clamp(1.5rem, 5vw, 2.5rem); }
+
+    .card-hover:hover {
+      transform: translateY(-0.5rem);
+      box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+    }
+
+    /* Hamburger menu */
+    #mobile-menu {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Image containment */
+    img.cover {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
-<body class="bg-zinc-950 text-zinc-200 min-h-screen overflow-x-hidden">
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/85 backdrop-blur-xl border-b border-zinc-800">
-        <div class="max-w-screen-2xl mx-auto px-10 py-8 flex items-center justify-between">
-            <div onclick="showPage('intro')" class="cursor-pointer group">
-                <h1 class="heading-font text-5xl tracking-tight font-medium text-white group-hover:text-amber-500 transition-colors">DESIGN PSYCHE</h1>
-                <p class="text-xs tracking-[0.2em] text-zinc-500 mt-1">PROPORTION · COLOR · EMOTION</p>
-            </div>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen">
 
-            <div class="flex items-center gap-12 text-sm uppercase tracking-wider font-medium text-zinc-400">
-                <button onclick="showPage('intro')" id="nav-intro" class="nav-link hover:text-white active">Introduction</button>
-                <button onclick="showPage('proportions')" id="nav-proportions" class="nav-link hover:text-white">Proportions</button>
-                <button onclick="showPage('colors')" id="nav-colors" class="nav-link hover:text-white">Color</button>
-                <button onclick="showPage('emotion')" id="nav-emotion" class="nav-link hover:text-white">Storytelling</button>
-            </div>
-        </div>
-    </nav>
+  <!-- ─── MOBILE-FRIENDLY NAVBAR ──────────────────────────────────────────────── -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800">
+    <div class="max-w-screen-2xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <div onclick="showPage('intro')" class="cursor-pointer">
+        <h1 class="heading-font text-3xl sm:text-4xl font-medium tracking-tight text-white">DESIGN PSYCHE</h1>
+      </div>
 
-    <div class="h-28"></div>
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-wider font-medium">
+        <button onclick="showPage('intro')"    class="nav-btn active" data-page="intro">Intro</button>
+        <button onclick="showPage('proportions')" class="nav-btn" data-page="proportions">Proportions</button>
+        <button onclick="showPage('colors')"      class="nav-btn" data-page="colors">Color</button>
+        <button onclick="showPage('emotion')"     class="nav-btn" data-page="emotion">Masterworks</button>
+      </div>
 
-    <!-- MAIN CONTENT -->
-    <div class="max-w-screen-2xl mx-auto px-10 pb-32">
-
-        <!-- INTRO -->
-        <div id="intro-page" class="page">
-            <div class="min-h-[90vh] flex items-center">
-                <div class="grid grid-cols-12 gap-16 items-center">
-                    <div class="col-span-12 lg:col-span-7">
-                        <div class="max-w-3xl">
-                            <h1 class="heading-font text-7xl lg:text-8xl leading-none font-light tracking-tight text-white mb-10">
-                                I believe the only thing that separates us as intelligent beings is our appreciation for aesthetics.
-                            </h1>
-                            <p class="text-2xl text-zinc-300 leading-relaxed max-w-2xl">
-                                It surrounds us — in symmetry, proportion, and color — shaping meaning and emotion.
-                            </p>
-
-                            <div class="mt-16 flex gap-8">
-                                <button onclick="showPage('proportions')" 
-                                        class="px-12 py-5 bg-amber-600 hover:bg-amber-500 text-white font-medium rounded-full transition">
-                                    Explore Proportions
-                                </button>
-                                <button onclick="showPage('colors')" 
-                                        class="px-12 py-5 border border-zinc-600 hover:border-zinc-300 rounded-full transition">
-                                    View Palettes
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-span-12 lg:col-span-5">
-                        <div class="aspect-[4/3] bg-gradient-to-br from-zinc-900 via-zinc-950 to-black rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl relative">
-                            <div class="absolute inset-0 flex items-center justify-center opacity-40">
-                                <div class="w-3/4 h-3/4 border border-amber-500/30 rounded-full"></div>
-                                <div class="absolute w-1/2 h-1/2 border border-amber-500/20 rounded-full"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- PROPORTIONS -->
-        <div id="proportions-page" class="page hidden">
-            <div class="py-20">
-                <div class="flex justify-between items-end mb-20">
-                    <div>
-                        <span class="text-amber-500 text-sm uppercase tracking-widest">I · Proportions</span>
-                        <h2 class="heading-font text-6xl text-white mt-3">The Architecture of Beauty</h2>
-                    </div>
-                    <p class="text-zinc-500 max-w-sm text-right text-sm">
-                        The subconscious rules that guide perception and emotional response
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <div onclick="showProportionModal(1)" class="group bg-zinc-900 border border-zinc-800 hover:border-amber-600 rounded-3xl p-10 cursor-pointer transition-all duration-300">
-                        <div class="h-72 bg-black rounded-2xl mb-8 flex items-center justify-center">
-                            <div class="w-5/6 h-5/6 border border-zinc-700 grid grid-cols-3 grid-rows-3">
-                                <div class="absolute inset-0 pointer-events-none">
-                                    <div class="absolute top-1/3 left-1/3 w-4 h-4 bg-amber-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                    <div class="absolute top-1/3 left-2/3 w-4 h-4 bg-amber-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                    <div class="absolute top-2/3 left-1/3 w-4 h-4 bg-amber-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                    <div class="absolute top-2/3 left-2/3 w-4 h-4 bg-amber-500 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-medium mb-3">Rule of Thirds</h3>
-                        <p class="text-zinc-400">Dynamic tension over static symmetry. The eye naturally seeks these intersection points.</p>
-                    </div>
-
-                    <div onclick="showProportionModal(2)" class="group bg-zinc-900 border border-zinc-800 hover:border-amber-600 rounded-3xl p-10 cursor-pointer transition-all duration-300">
-                        <div class="h-72 bg-black rounded-2xl mb-8 flex items-center justify-center overflow-hidden">
-                            <div class="flex w-4/5 h-3/5 golden-rect" style="width:61.8%">
-                                <div class="flex-1 bg-gradient-to-r from-blue-900 to-indigo-900 flex items-center justify-center text-zinc-400 text-sm">1</div>
-                                <div class="w-[61.8%] bg-gradient-to-r from-amber-600 to-amber-400 flex items-center justify-center text-sm font-medium">φ</div>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-medium mb-3">Golden Ratio</h3>
-                        <p class="text-zinc-400">The proportion found throughout nature and classical art. Produces deep, almost instinctual harmony.</p>
-                    </div>
-
-                    <div onclick="showProportionModal(3)" class="group bg-zinc-900 border border-zinc-800 hover:border-amber-600 rounded-3xl p-10 cursor-pointer transition-all duration-300">
-                        <div class="h-72 bg-black rounded-2xl mb-8 flex items-center justify-center">
-                            <svg width="320" height="200" class="text-zinc-600">
-                                <line x1="40" y1="50" x2="280" y2="50" stroke="currentColor" stroke-width="12"/>
-                                <line x1="40" y1="140" x2="280" y2="140" stroke="currentColor" stroke-width="12"/>
-                                <line x1="100" y1="30" x2="220" y2="170" stroke="#d97706" stroke-width="4" stroke-dasharray="6"/>
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-medium mb-3">Parallels & Leading Lines</h3>
-                        <p class="text-zinc-400">Parallel lines separate and distance. Converging lines draw the viewer into emotional narrative.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- COLORS -->
-        <div id="colors-page" class="page hidden">
-            <div class="py-20">
-                <div class="text-center mb-20">
-                    <span class="text-violet-400 text-sm uppercase tracking-widest">II · Color</span>
-                    <h2 class="heading-font text-6xl text-white mt-4">The Language of Emotion</h2>
-                </div>
-
-                <div class="flex justify-center mb-24">
-                    <div class="relative w-96 h-96">
-                        <div class="w-full h-full rounded-full border-8 border-zinc-800"
-                             style="background: conic-gradient(
-                                #E63946 0deg 45deg,
-                                #FFBE0B 45deg 90deg,
-                                #8AC926 90deg 135deg,
-                                #2A9D8F 135deg 180deg,
-                                #457B9D 180deg 225deg,
-                                #3A86FF 225deg 270deg,
-                                #6A4C93 270deg 315deg,
-                                #E63946 315deg 360deg
-                             );">
-                        </div>
-                        <div class="absolute inset-[15%] bg-zinc-950 rounded-full border-4 border-zinc-800 flex items-center justify-center">
-                            <div class="text-center">
-                                <div class="text-amber-400 text-sm">COLOR</div>
-                                <div class="text-white font-medium">WHEEL</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="palettes-grid">
-                    <!-- JS populated -->
-                </div>
-            </div>
-        </div>
-
-        <!-- EMOTION / STORYTELLING -->
-        <div id="emotion-page" class="page hidden">
-            <div class="py-20">
-                <h2 class="heading-font text-6xl text-center mb-6">Composition + Color = Emotion</h2>
-                <p class="text-center text-zinc-400 max-w-3xl mx-auto mb-24">
-                    How proportion and palette combine to shape psychological response in masterworks and modern media
-                </p>
-
-                <div class="space-y-32">
-                    <!-- La La Land -->
-                    <div class="grid grid-cols-12 gap-16 items-center">
-                        <div class="col-span-12 lg:col-span-5">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/8/8b/La_La_Land_%28film%29_poster.jpg" 
-                                 class="rounded-3xl shadow-2xl border border-zinc-800" alt="La La Land">
-                        </div>
-                        <div class="col-span-12 lg:col-span-7">
-                            <h3 class="text-4xl font-medium mb-8">La La Land (2016)</h3>
-                            <div class="space-y-6 text-zinc-300">
-                                <p>Mia is coded in blue — longing, creativity, reality. Sebastian in red — passion, jazz, ambition. Their moments of harmony appear in purple.</p>
-                                <p>Vibrant triadic palettes in spring/summer give way to muted, desaturated tones as dreams collide with reality.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Monet -->
-                    <div class="grid grid-cols-12 gap-16 items-center">
-                        <div class="col-span-12 lg:col-span-5 order-2 lg:order-1">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Claude_Monet_-_Water_Lilies_-_1897-1899.jpg/1280px-Claude_Monet_-_Water_Lilies_-_1897-1899.jpg" 
-                                 class="rounded-3xl shadow-2xl border border-zinc-800" alt="Monet Water Lilies">
-                        </div>
-                        <div class="col-span-12 lg:col-span-7 order-1 lg:order-2">
-                            <h3 class="text-4xl font-medium mb-8">Claude Monet — Water Lilies</h3>
-                            <p class="text-zinc-300">Analogous cool tones and soft, rhythmic composition produce meditative calm and introspection.</p>
-                        </div>
-                    </div>
-
-                    <!-- Van Gogh -->
-                    <div class="grid grid-cols-12 gap-16 items-center">
-                        <div class="col-span-12 lg:col-span-5">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" 
-                                 class="rounded-3xl shadow-2xl border border-zinc-800" alt="Starry Night">
-                        </div>
-                        <div class="col-span-12 lg:col-span-7">
-                            <h3 class="text-4xl font-medium mb-8">Vincent van Gogh — Starry Night</h3>
-                            <p class="text-zinc-300">Complementary yellow-blue contrast combined with swirling, rhythmic movement evokes wonder, restlessness, and cosmic awe.</p>
-                        </div>
-                    </div>
-
-                    <!-- Horror (Jaws) -->
-                    <div class="grid grid-cols-12 gap-16 items-center">
-                        <div class="col-span-12 lg:col-span-5 order-2 lg:order-1">
-                            <img src="https://upload.wikimedia.org/wikipedia/en/0/0b/Jaws_poster.jpg" 
-                                 class="rounded-3xl shadow-2xl border border-zinc-800" alt="Jaws Poster">
-                        </div>
-                        <div class="col-span-12 lg:col-span-7 order-1 lg:order-2">
-                            <h3 class="text-4xl font-medium mb-8">Jaws (1975) Poster</h3>
-                            <p class="text-zinc-300">Low-key darkness pierced by sharp complementary red creates immediate primal tension and dread.</p>
-                        </div>
-                    </div>
-
-                    <!-- Coca-Cola -->
-                    <div class="bg-gradient-to-r from-red-700 to-amber-700 rounded-3xl p-16 text-white">
-                        <div class="max-w-4xl mx-auto">
-                            <h3 class="text-5xl font-medium mb-10">Coca-Cola Classic Campaigns</h3>
-                            <p class="text-xl leading-relaxed">
-                                Warm, high-energy palette combined with symmetrical, balanced composition produces instant feelings of joy, refreshment, and social connection.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <!-- Mobile hamburger -->
+      <button id="hamburger" class="md:hidden text-3xl focus:outline-none">
+        ☰
+      </button>
     </div>
 
-    <!-- MODAL -->
-    <div id="modal-backdrop" onclick="if(event.target.id==='modal-backdrop')hideModal()" 
-         class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center">
-        <div class="modal bg-zinc-900 max-w-2xl w-full mx-6 rounded-3xl p-12" onclick="event.stopPropagation()">
-            <div id="modal-content"></div>
-            <button onclick="hideModal()" class="mt-10 w-full py-5 bg-zinc-800 hover:bg-zinc-700 rounded-full text-sm font-medium transition">
-                Close
-            </button>
-        </div>
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="md:hidden hidden bg-zinc-900 border-b border-zinc-800">
+      <div class="flex flex-col items-center py-6 gap-6 text-lg">
+        <button onclick="showPage('intro')"    class="nav-btn-mobile" data-page="intro">Introduction</button>
+        <button onclick="showPage('proportions')" class="nav-btn-mobile" data-page="proportions">Proportions</button>
+        <button onclick="showPage('colors')"      class="nav-btn-mobile" data-page="colors">Color</button>
+        <button onclick="showPage('emotion')"     class="nav-btn-mobile" data-page="emotion">Masterworks</button>
+      </div>
     </div>
+  </nav>
 
-    <script>
-        const palettes = [
-            { name: "Warm Palette", hex: ["#E63946","#F77F00","#FFBE0B"], desc: "Energy · Passion · Warmth · Excitement" },
-            { name: "Cool Palette", hex: ["#457B9D","#2A9D8F","#6A4C93"], desc: "Calm · Trust · Serenity · Melancholy" },
-            { name: "Monochromatic", hex: ["#1D3557","#457B9D","#A8DADC"], desc: "Harmony · Simplicity · Elegance · Minimalism" },
-            { name: "Analogous", hex: ["#8AC926","#FFCA3A","#FF924C"], desc: "Cohesion · Natural flow · Comfort · Unity" },
-            { name: "Complementary", hex: ["#3A86FF","#FB5607"], desc: "High contrast · Tension · Visual excitement" },
-            { name: "Triadic", hex: ["#E63946","#3A86FF","#FFBE0B"], desc: "Vibrant · Balanced energy · Playful harmony" },
-            { name: "Pastel", hex: ["#FFC8DD","#BDE0FE","#CAFFBF"], desc: "Softness · Gentleness · Dreamlike innocence" },
-            { name: "Dark / Low-key", hex: ["#1B1B2F","#3F3351","#53354A"], desc: "Mystery · Seriousness · Depth · Drama" }
-        ];
+  <div style="height: var(--nav-height);"></div>
 
-        function renderPalettes() {
-            const container = document.getElementById('palettes-grid');
-            let html = '';
-            palettes.forEach(p => {
-                let swatches = p.hex.map(hex => `
-                    <div class="swatch flex flex-col items-center cursor-pointer group" onclick="navigator.clipboard.writeText('${hex}')">
-                        <div class="w-20 h-20 rounded-2xl shadow-xl" style="background-color: ${hex}"></div>
-                        <span class="mt-3 text-xs font-mono text-zinc-500 group-hover:text-amber-400 transition">${hex}</span>
-                    </div>
-                `).join('');
-                
-                html += `
-                <div class="bg-zinc-900 border border-zinc-800 hover:border-violet-600 rounded-3xl p-10 transition-all duration-300">
-                    <h3 class="text-2xl font-medium mb-6">${p.name}</h3>
-                    <p class="text-zinc-400 mb-10">${p.desc}</p>
-                    <div class="flex justify-center gap-10 flex-wrap">
-                        ${swatches}
-                    </div>
-                </div>`;
-            });
-            container.innerHTML = html;
+  <!-- ─── MAIN CONTENT ─────────────────────────────────────────────────────────── -->
+  <main class="max-w-screen-2xl mx-auto px-5 sm:px-8 pb-20">
+
+    <!-- INTRO -->
+    <section id="intro-page" class="page min-h-[80vh] flex items-center py-12 md:py-24">
+      <div class="w-full">
+        <h1 class="heading-font font-light tracking-tight text-white mb-6">
+          I believe the only thing that separates us as intelligent beings<br class="hidden sm:block"/>
+          is our appreciation for aesthetics.
+        </h1>
+        <p class="text-xl sm:text-2xl text-zinc-300 max-w-3xl leading-relaxed">
+          It surrounds us — in symmetry, proportion, and color — shaping meaning and emotion.
+        </p>
+
+        <div class="mt-12 flex flex-col sm:flex-row gap-5">
+          <button onclick="showPage('proportions')" class="px-10 py-5 bg-amber-600 hover:bg-amber-500 rounded-xl font-medium text-lg transition">
+            Explore Proportions
+          </button>
+          <button onclick="showPage('emotion')" class="px-10 py-5 border border-zinc-600 hover:border-zinc-400 rounded-xl font-medium text-lg transition">
+            See Masterworks
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROPORTIONS -->
+    <section id="proportions-page" class="page hidden py-16 md:py-24">
+      <h2 class="heading-font text-center md:text-left mb-12">The Architecture of Beauty</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div class="card-hover bg-zinc-900 rounded-2xl p-6 md:p-8 cursor-pointer" onclick="alert('Rule of Thirds: dynamic tension & natural eye flow')">
+          <div class="aspect-[4/3] bg-zinc-800 rounded-xl mb-5 flex items-center justify-center text-amber-400 text-2xl font-bold">Rule of Thirds</div>
+          <h3 class="text-xl font-medium">Rule of Thirds</h3>
+          <p class="text-zinc-400 text-sm mt-2">Creates dynamic balance instead of static centering</p>
+        </div>
+
+        <div class="card-hover bg-zinc-900 rounded-2xl p-6 md:p-8 cursor-pointer" onclick="alert('Golden Ratio: nature’s most pleasing proportion')">
+          <div class="aspect-[4/3] bg-zinc-800 rounded-xl mb-5 flex items-center justify-center text-amber-400 text-2xl font-bold">φ ≈ 1.618</div>
+          <h3 class="text-xl font-medium">Golden Ratio</h3>
+          <p class="text-zinc-400 text-sm mt-2">Instinctual harmony found in nature & classical art</p>
+        </div>
+
+        <div class="card-hover bg-zinc-900 rounded-2xl p-6 md:p-8 cursor-pointer" onclick="alert('Leading Lines: guide the eye & create narrative')">
+          <div class="aspect-[4/3] bg-zinc-800 rounded-xl mb-5 flex items-center justify-center text-amber-400 text-2xl font-bold">→→→</div>
+          <h3 class="text-xl font-medium">Leading Lines</h3>
+          <p class="text-zinc-400 text-sm mt-2">Pull attention & build emotional direction</p>
+        </div>
+
+        <div class="card-hover bg-zinc-900 rounded-2xl p-6 md:p-8 cursor-pointer" onclick="alert('Negative Space: breathing room & mystery')">
+          <div class="aspect-[4/3] bg-zinc-800 rounded-xl mb-5 flex items-center justify-center text-amber-400 text-2xl font-bold">− SPACE −</div>
+          <h3 class="text-xl font-medium">Negative Space</h3>
+          <p class="text-zinc-400 text-sm mt-2">Amplifies subject & creates tension</p>
+        </div>
+
+        <div class="card-hover bg-zinc-900 rounded-2xl p-6 md:p-8 cursor-pointer col-span-1 md:col-span-2 lg:col-span-1" onclick="alert('Balance & Rhythm: visual harmony or energy')">
+          <div class="aspect-[4/3] bg-zinc-800 rounded-xl mb-5 flex items-center justify-center text-amber-400 text-2xl font-bold">↔︎ RHYTHM ↔︎</div>
+          <h3 class="text-xl font-medium">Balance & Rhythm</h3>
+          <p class="text-zinc-400 text-sm mt-2">Symmetry = calm • Asymmetry = movement</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLORS -->
+    <section id="colors-page" class="page hidden py-16 md:py-24">
+      <h2 class="heading-font text-center md:text-left mb-12">The Emotional Language of Color</h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <!-- Example palette cards – repeat pattern -->
+        <div class="bg-zinc-900 rounded-2xl p-6 md:p-8">
+          <div class="flex gap-4 mb-6 justify-center">
+            <div class="w-16 h-16 rounded-xl" style="background:#E63946"></div>
+            <div class="w-16 h-16 rounded-xl" style="background:#F77F00"></div>
+            <div class="w-16 h-16 rounded-xl" style="background:#FFBE0B"></div>
+          </div>
+          <h3 class="text-xl font-medium text-center">Warm Palette</h3>
+          <p class="text-zinc-400 text-sm mt-3 text-center">Energy • Passion • Excitement</p>
+        </div>
+
+        <div class="bg-zinc-900 rounded-2xl p-6 md:p-8">
+          <div class="flex gap-4 mb-6 justify-center">
+            <div class="w-16 h-16 rounded-xl" style="background:#457B9D"></div>
+            <div class="w-16 h-16 rounded-xl" style="background:#2A9D8F"></div>
+            <div class="w-16 h-16 rounded-xl" style="background:#6A4C93"></div>
+          </div>
+          <h3 class="text-xl font-medium text-center">Cool Palette</h3>
+          <p class="text-zinc-400 text-sm mt-3 text-center">Calm • Trust • Serenity</p>
+        </div>
+
+        <!-- Add more palettes as needed -->
+      </div>
+    </section>
+
+    <!-- MASTERWORKS -->
+    <section id="emotion-page" class="page hidden py-16 md:py-24">
+      <h2 class="heading-font text-center md:text-left mb-12">Composition + Color = Emotion</h2>
+
+      <div class="space-y-16 md:space-y-24">
+        <div class="bg-zinc-900 rounded-2xl overflow-hidden">
+          <div class="aspect-video">
+            <img src="https://upload.wikimedia.org/wikipedia/en/8/8b/La_La_Land_%28film%29_poster.jpg" alt="La La Land" class="cover"/>
+          </div>
+          <div class="p-6 md:p-10">
+            <h3 class="text-2xl md:text-3xl font-medium">La La Land</h3>
+            <p class="text-zinc-300 mt-4 text-sm md:text-base">
+              Triadic vibrant colors early → muted tones later.<br>
+              Rule of thirds + golden ratio framing in key romantic scenes.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-zinc-900 rounded-2xl overflow-hidden">
+          <div class="aspect-video">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1280px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg" alt="Starry Night" class="cover"/>
+          </div>
+          <div class="p-6 md:p-10">
+            <h3 class="text-2xl md:text-3xl font-medium">Starry Night</h3>
+            <p class="text-zinc-300 mt-4 text-sm md:text-base">
+              Complementary yellow-blue vibration + swirling leading lines + vast negative space = cosmic restlessness & wonder.
+            </p>
+          </div>
+        </div>
+
+        <!-- Add more examples similarly -->
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // ─── PAGE SWITCHING ──────────────────────────────────────────────────────────
+    function showPage(pageId) {
+      document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+      document.getElementById(pageId + '-page').classList.remove('hidden');
+
+      // Update active nav buttons
+      document.querySelectorAll('.nav-btn, .nav-btn-mobile').forEach(btn => {
+        btn.classList.remove('active', 'text-amber-400');
+        if (btn.dataset.page === pageId) {
+          btn.classList.add('active', 'text-amber-400');
         }
+      });
 
-        function showProportionModal(id) {
-            const content = document.getElementById('modal-content');
-            let html = '';
+      // Close mobile menu if open
+      document.getElementById('mobile-menu').classList.add('hidden');
+    }
 
-            if (id === 1) {
-                html = `
-                    <h3 class="text-4xl font-medium mb-8">Rule of Thirds</h3>
-                    <p class="text-zinc-300 leading-relaxed mb-10">Placing key elements along the lines or intersections of an imaginary 3×3 grid creates dynamic tension and natural focal points — far more engaging than perfect symmetry.</p>
-                    <div class="text-sm text-amber-400">Psychological effect: Guided attention without obvious direction</div>
-                `;
-            } else if (id === 2) {
-                html = `
-                    <h3 class="text-4xl font-medium mb-8">Golden Ratio (φ ≈ 1.618)</h3>
-                    <p class="text-zinc-300 leading-relaxed mb-10">This mathematical proportion appears in nature, architecture, and art across cultures. It produces a sense of effortless, almost inevitable harmony.</p>
-                    <div class="text-sm text-amber-400">Psychological effect: Subconscious pleasure and aesthetic satisfaction</div>
-                `;
-            } else if (id === 3) {
-                html = `
-                    <h3 class="text-4xl font-medium mb-8">Parallels & Leading Lines</h3>
-                    <p class="text-zinc-300 leading-relaxed mb-10">Parallel lines divide space and create psychological distance. Converging or leading lines pull the eye inward, creating narrative momentum and emotional involvement.</p>
-                    <div class="text-sm text-amber-400">Psychological effect: Separation vs. invitation</div>
-                `;
-            }
+    // ─── HAMBURGER TOGGLE ───────────────────────────────────────────────────────
+    document.getElementById('hamburger').addEventListener('click', () => {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
 
-            content.innerHTML = html;
-            document.getElementById('modal-backdrop').classList.remove('hidden');
-            document.getElementById('modal-backdrop').classList.add('flex');
-        }
+    // ─── INIT ───────────────────────────────────────────────────────────────────
+    showPage('intro');
 
-        function hideModal() {
-            document.getElementById('modal-backdrop').classList.add('hidden');
-            document.getElementById('modal-backdrop').classList.remove('flex');
-        }
-
-        function showPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-            document.getElementById(page + '-page').classList.remove('hidden');
-
-            document.querySelectorAll('.nav-link').forEach(l => {
-                l.classList.remove('active', 'text-white');
-                if (l.id === `nav-${page}`) l.classList.add('active', 'text-white');
-            });
-
-            window.scrollTo({ top: 100, behavior: 'smooth' });
-        }
-
-        document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') hideModal();
-        });
-
-        // Init
-        renderPalettes();
-        showPage('intro');
-    </script>
+    // Add active class to intro on load
+    document.querySelector('[data-page="intro"]').classList.add('active', 'text-amber-400');
+  </script>
 </body>
 </html>
