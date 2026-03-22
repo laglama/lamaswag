@@ -31,103 +31,30 @@ nav a {
     cursor: pointer;
 }
 
+/* HERO */
+.hero {
+    background: #C2C395;
+    padding: 120px 20px 80px;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 32px;
+    max-width: 800px;
+    margin: auto;
+    line-height: 1.6;
+}
+
 /* SECTIONS */
 .section {
     display: none;
-    padding: 80px 20px;
+    padding: 60px 20px;
     max-width: 900px;
     margin: auto;
 }
 
 .active {
     display: block;
-}
-
-/* INTRO PAGE */
-#introPage {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #C2C395;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-#introPage::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: url("https://grainy-gradients.vercel.app/noise.svg");
-    opacity: 0.2;
-}
-
-#introPage::before {
-    content: "";
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background:
-        radial-gradient(circle at 30% 40%, #818263 2px, transparent 2px),
-        radial-gradient(circle at 70% 60%, #818263 1.5px, transparent 2px);
-    background-size: 80px 80px;
-    opacity: 0.25;
-}
-
-.blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(40px);
-}
-
-.blob1 {
-    width: 300px;
-    height: 300px;
-    background: #aeb07f;
-    top: 10%;
-    left: 10%;
-}
-
-.blob2 {
-    width: 250px;
-    height: 250px;
-    background: #8e9070;
-    bottom: 10%;
-    right: 10%;
-}
-
-.intro-container {
-    position: relative;
-    max-width: 700px;
-    padding: 40px;
-    text-align: center;
-    color: #2e2e2e;
-}
-
-.intro-container h1 {
-    font-size: 38px;
-}
-
-.intro-container p {
-    line-height: 1.8;
-}
-
-.intro-container button {
-    margin-top: 25px;
-    padding: 12px 30px;
-    background: #818263;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.intro-container button:hover {
-    transform: scale(1.05);
 }
 
 /* PALETTE */
@@ -157,26 +84,18 @@ img {
     border-radius: 10px;
     margin-top: 15px;
 }
+
+/* MOBILE */
+@media (max-width:600px){
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+}
 </style>
 </head>
 
 <body>
-
-<!-- INTRO -->
-<div id="introPage">
-    <div class="blob blob1"></div>
-    <div class="blob blob2"></div>
-
-    <div class="intro-container">
-        <h1>Design & Meaning</h1>
-        <p>
-        im making this site because i believe that the only thing that seperates us as intelligent beings is our appreciation for aesthetics.
-        it surrounds us, the simple symmetry of buildings, the golden ratios in every touch of nature are all things that move us and therefore make our meaning.
-        i wanted to use this site to help people gain a small understanding into how everything as small as color affect us.
-        </p>
-        <button onclick="enterSite()">Proceed →</button>
-    </div>
-</div>
 
 <!-- NAV -->
 <nav>
@@ -188,24 +107,43 @@ img {
     </div>
 </nav>
 
+<!-- HERO -->
+<div class="hero">
+    <h1>
+    I believe that the only thing that separates us as intelligent beings is our appreciation for aesthetics. 
+    It surrounds us — from the symmetry of buildings to the golden ratios in nature. 
+    These elements move us, shape meaning, and influence how we feel. 
+    This site explores how even something as simple as color can affect the human mind.
+    </h1>
+</div>
+
 <!-- RATIOS -->
 <div id="ratios" class="section active">
     <h1>📐 Ratios & Proportions</h1>
 
-    <p>Humans are drawn to balance and patterns because the brain seeks order.</p>
+    <p>
+    Humans are naturally drawn to patterns and structure. The brain searches for balance and order in everything we see.
+    </p>
 
     <h3>Golden Ratio</h3>
     <div class="bar">
         <div class="small"></div>
         <div class="large"></div>
     </div>
-    <p>Creates harmony and reduces visual stress.</p>
+    <p>
+    The golden ratio appears in nature, so the brain recognizes it as natural and harmonious. 
+    It reduces visual stress and makes designs feel effortless.
+    </p>
 
     <h3>Parallel Lines</h3>
-    <p>Create structure and separation, making information easier to process.</p>
+    <p>
+    Parallel lines create separation and structure. They help the brain organize information clearly.
+    </p>
 
     <h3>Symmetry</h3>
-    <p>Associated with beauty, stability, and trust.</p>
+    <p>
+    Symmetry is associated with beauty, stability, and safety. The brain processes symmetrical designs faster.
+    </p>
 </div>
 
 <!-- COLORS -->
@@ -219,52 +157,55 @@ img {
         <div class="card" style="background:#D94F04">#D94F04</div>
     </div>
 
-    <p>Color directly influences emotion and behavior.</p>
+    <p>
+    Color is processed faster than text by the brain. It directly influences emotion and behavior.
+    </p>
+
+    <h3>Warm Colors</h3>
+    <p>
+    Red, orange, and yellow increase energy and excitement. They stimulate the brain and grab attention.
+    </p>
+
+    <h3>Cool Colors</h3>
+    <p>
+    Blue and green calm the mind and create a sense of trust and stability.
+    </p>
 </div>
 
 <!-- EXAMPLES -->
 <div id="examples" class="section">
     <h1>🎬 Design in Real Life</h1>
 
-    <h3>Monet</h3>
+    <h3>Claude Monet</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
-    <p>Soft colors create calmness and reduce mental strain.</p>
+    <p>
+    Soft colors and blurred edges mimic natural perception, creating calmness and reducing mental strain.
+    </p>
 
     <h3>Van Gogh</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
-    <p>Movement and contrast create emotional intensity.</p>
+    <p>
+    Strong contrast and motion create emotional intensity and stimulate the brain.
+    </p>
 
     <h3>Horror Poster</h3>
     <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
-    <p>Darkness increases fear by hiding information from the brain.</p>
+    <p>
+    Darkness and isolation create fear because the brain fears what it cannot fully see.
+    </p>
 
-    <h3>Coca-Cola</h3>
+    <h3>Coca-Cola Advertisement</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
-    <p>Red stimulates excitement and appetite.</p>
+    <p>
+    Red stimulates excitement and appetite, making the product more appealing.
+    </p>
 </div>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    window.enterSite = function () {
-        const intro = document.getElementById("introPage");
-
-        intro.style.transition = "opacity 0.8s ease, transform 0.8s ease";
-        intro.style.opacity = "0";
-        intro.style.transform = "scale(1.05)";
-        intro.style.pointerEvents = "none";
-
-        setTimeout(() => {
-            intro.style.display = "none";
-        }, 800);
-    };
-
-    window.showPage = function (page) {
-        document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-        document.getElementById(page).classList.add("active");
-    };
-
-});
+function showPage(page) {
+    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+    document.getElementById(page).classList.add("active");
+}
 </script>
 
 </body>
