@@ -123,6 +123,11 @@ nav a {
     border: none;
     border-radius: 30px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.intro-container button:hover {
+    transform: scale(1.05);
 }
 
 /* PALETTE */
@@ -187,20 +192,20 @@ img {
 <div id="ratios" class="section active">
     <h1>📐 Ratios & Proportions</h1>
 
-    <p>Humans are drawn to balance and patterns.</p>
+    <p>Humans are drawn to balance and patterns because the brain seeks order.</p>
 
     <h3>Golden Ratio</h3>
     <div class="bar">
         <div class="small"></div>
         <div class="large"></div>
     </div>
-    <p>Creates harmony and natural beauty.</p>
+    <p>Creates harmony and reduces visual stress.</p>
 
     <h3>Parallel Lines</h3>
-    <p>Create order and separation.</p>
+    <p>Create structure and separation, making information easier to process.</p>
 
     <h3>Symmetry</h3>
-    <p>Associated with beauty and stability.</p>
+    <p>Associated with beauty, stability, and trust.</p>
 </div>
 
 <!-- COLORS -->
@@ -214,7 +219,7 @@ img {
         <div class="card" style="background:#D94F04">#D94F04</div>
     </div>
 
-    <p>Color directly affects emotion and behavior.</p>
+    <p>Color directly influences emotion and behavior.</p>
 </div>
 
 <!-- EXAMPLES -->
@@ -223,33 +228,43 @@ img {
 
     <h3>Monet</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Claude_Monet%2C_Impression%2C_soleil_levant.jpg">
-    <p>Soft colors create calmness.</p>
+    <p>Soft colors create calmness and reduce mental strain.</p>
 
     <h3>Van Gogh</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/The_Starry_Night.JPG">
-    <p>Motion and contrast create emotion.</p>
+    <p>Movement and contrast create emotional intensity.</p>
 
     <h3>Horror Poster</h3>
     <img src="https://upload.wikimedia.org/wikipedia/en/7/7c/Exorcist_ver2.jpg">
-    <p>Darkness creates fear.</p>
+    <p>Darkness increases fear by hiding information from the brain.</p>
 
     <h3>Coca-Cola</h3>
     <img src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Coca-Cola_logo.svg">
-    <p>Red creates excitement and appetite.</p>
+    <p>Red stimulates excitement and appetite.</p>
 </div>
 
 <script>
-function showPage(page) {
-    document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-    document.getElementById(page).classList.add("active");
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-function enterSite() {
-    let intro = document.getElementById("introPage");
-    intro.style.transition = "1s";
-    intro.style.opacity = "0";
-    setTimeout(() => intro.style.display = "none", 1000);
-}
+    window.enterSite = function () {
+        const intro = document.getElementById("introPage");
+
+        intro.style.transition = "opacity 0.8s ease, transform 0.8s ease";
+        intro.style.opacity = "0";
+        intro.style.transform = "scale(1.05)";
+        intro.style.pointerEvents = "none";
+
+        setTimeout(() => {
+            intro.style.display = "none";
+        }, 800);
+    };
+
+    window.showPage = function (page) {
+        document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
+        document.getElementById(page).classList.add("active");
+    };
+
+});
 </script>
 
 </body>
