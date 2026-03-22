@@ -3,228 +3,143 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Unilord University Helper 👾🎓</title>
+<title>Lkhamaa Monsor Portfolio 👾</title>
 
 <style>
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    font-family: Arial;
+    background: linear-gradient(135deg, #0f2027, #2c5364);
     color: white;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    background: rgba(0,0,0,0.6);
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* SECTIONS */
+.section {
+    display: none;
+    padding: 40px;
     text-align: center;
 }
 
-.container {
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
+.active {
+    display: block;
 }
 
-h1 {
-    margin-bottom: 5px;
-}
-
+/* MASCOT */
 .mascot {
-    margin: 20px auto;
-}
-
-.mascot img {
     width: 120px;
-    animation: bounce 2s infinite;
+    margin: 20px;
+    animation: float 2s infinite;
 }
 
-@keyframes bounce {
-    0%,100% { transform: translateY(0);}
+@keyframes float {
+    0% { transform: translateY(0);}
     50% { transform: translateY(-10px);}
+    100% { transform: translateY(0);}
 }
 
-.speech {
-    background: white;
-    color: black;
-    padding: 10px;
-    border-radius: 15px;
-    display: inline-block;
-    margin-top: 10px;
-    max-width: 300px;
-}
-
-.section {
+.card {
     background: rgba(255,255,255,0.1);
     padding: 20px;
-    border-radius: 15px;
-    margin: 15px 0;
-    text-align: left;
-}
-
-label {
-    display: block;
-    margin: 8px 0;
-}
-
-input, textarea, select {
-    width: 100%;
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-    margin-top: 5px;
-}
-
-button {
-    margin-top: 15px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    border: none;
-    background: #00c6ff;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-.result {
-    margin-top: 20px;
-    background: rgba(0,0,0,0.4);
-    padding: 15px;
+    margin: 15px auto;
     border-radius: 10px;
-    text-align: left;
+    max-width: 500px;
 }
 
-.progress-bar {
-    height: 20px;
-    background: #333;
-    border-radius: 20px;
-    overflow: hidden;
-    margin-top: 10px;
+.image {
+    width: 80%;
+    border-radius: 15px;
+    margin-top: 20px;
 }
 
-.progress {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #00ffcc, #00c6ff);
-    transition: 0.5s;
+/* MOBILE */
+@media (max-width:600px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
-    <h1>👾 Unilord's University Helper 🎓</h1>
-    <p>Your cute guide to getting accepted!</p>
+<!-- NAV -->
+<nav>
+    <h2>👾 Unilord</h2>
+    <div>
+        <a onclick="showPage('home')">Home</a>
+        <a onclick="showPage('about')">About</a>
+        <a onclick="showPage('projects')">Projects</a>
+    </div>
+</nav>
 
-    <!-- Mascot -->
-    <div class="mascot">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
-        <div class="speech" id="mascotSpeech">
-            Hi! I'm Unilord 👾 Let's build your perfect application!
-        </div>
+<!-- HOME -->
+<div id="home" class="section active">
+    <h1>Lkhamaa Monsor</h1>
+    <p>Class 12C 🎓</p>
+    <p>Art 🎨 | Design 💻 | Fencing ⚔️</p>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" class="mascot">
+
+    <p>"I created this website to inspire people to follow their dreams."</p>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="section">
+    <h1>About Me</h1>
+
+    <p>Hi! I'm <strong>Lkhamaa Monsor</strong>.</p>
+    <p>I love art and design because it allows me to express creativity.</p>
+    <p>I am also a fencer ⚔️, which teaches discipline and focus.</p>
+
+    <img src="https://cdn.pixabay.com/photo/2017/08/06/10/24/fencing-2591195_1280.jpg" class="image">
+</div>
+
+<!-- PROJECTS -->
+<div id="projects" class="section">
+    <h1>Projects & Achievements</h1>
+
+    <div class="card">
+        <h3>🎨 Art & Design</h3>
+        <p>I enjoy creating visual designs and exploring creativity.</p>
     </div>
 
-    <!-- Form -->
-    <div class="section">
-        <h3>📌 Personal Info</h3>
-        <label>Name <input type="text" id="name"></label>
-        <label>Email <input type="email" id="email"></label>
+    <div class="card">
+        <h3>⚔️ Fencing</h3>
+        <p>Fencing improved my discipline and strategy skills.</p>
     </div>
 
-    <div class="section">
-        <h3>📚 Academics</h3>
-        <label>GPA <input type="number" id="gpa" step="0.1"></label>
-        <label>Test Score <input type="number" id="testScore"></label>
+    <div class="card">
+        <h3>💻 University Helper Website</h3>
+        <p>This website helps students avoid mistakes in applications.</p>
     </div>
 
-    <div class="section">
-        <h3>📝 Materials</h3>
-        <label><input type="checkbox" id="essay"> Essay Done</label>
-        <label><input type="checkbox" id="rec"> Recommendation Letters</label>
-        <label><input type="checkbox" id="activities"> Activities Listed</label>
-    </div>
-
-    <div class="section">
-        <h3>🎯 Submission</h3>
-        <label>Universities Applied <input type="number" id="unis"></label>
-        <label>Status
-            <select id="submitted">
-                <option value="no">Not Submitted</option>
-                <option value="yes">Submitted</option>
-            </select>
-        </label>
-    </div>
-
-    <button onclick="checkApp()">Check with Unilord 👾</button>
-
-    <div class="result" id="result"></div>
-
-    <div class="progress-bar">
-        <div class="progress" id="progress"></div>
-    </div>
-
+    <img src="https://cdn.pixabay.com/photo/2016/11/29/09/32/design-1868728_1280.jpg" class="image">
 </div>
 
 <script>
-function speak(msg) {
-    document.getElementById("mascotSpeech").innerText = msg;
-}
-
-function checkApp() {
-    let score = 0;
-    let issues = [];
-
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let gpa = parseFloat(document.getElementById("gpa").value);
-    let test = parseInt(document.getElementById("testScore").value);
-    let essay = document.getElementById("essay").checked;
-    let rec = document.getElementById("rec").checked;
-    let act = document.getElementById("activities").checked;
-    let unis = parseInt(document.getElementById("unis").value);
-    let submitted = document.getElementById("submitted").value;
-
-    if(!name){ issues.push("Missing name"); speak("Hey! I need your name 👀"); }
-    else score+=10;
-
-    if(!email.includes("@")){ issues.push("Invalid email"); speak("That email looks sus 😬"); }
-    else score+=10;
-
-    if(!gpa || gpa<2.5){ issues.push("Low GPA"); speak("We might need to boost your academics 📚"); }
-    else score+=15;
-
-    if(!test || test<900){ issues.push("Low test score"); speak("Try improving your test score 💪"); }
-    else score+=15;
-
-    if(!essay){ issues.push("Missing essay"); speak("Your story matters! Write that essay ✍️"); }
-    else score+=10;
-
-    if(!rec){ issues.push("No recommendations"); speak("Teachers gotta hype you up 😎"); }
-    else score+=10;
-
-    if(!act){ issues.push("No activities"); speak("Show your personality with activities 🌟"); }
-    else score+=10;
-
-    if(!unis || unis<3){ issues.push("Too few universities"); speak("Apply to more schools 🎯"); }
-    else score+=10;
-
-    if(submitted==="no"){ issues.push("Not submitted"); speak("Don't forget to submit! ⏰"); }
-    else score+=10;
-
-    let resultHTML = "<h3>📊 Unilord's Review</h3>";
-
-    if(issues.length===0){
-        resultHTML += "<p>✅ PERFECT APPLICATION 👑</p>";
-        speak("YOU DID AMAZING!!! I'M PROUD 👾💙");
-    } else {
-        resultHTML += "<ul>";
-        issues.forEach(i=> resultHTML+="<li>❌ "+i+"</li>");
-        resultHTML += "</ul>";
-    }
-
-    resultHTML += "<p><strong>Score: "+score+"%</strong></p>";
-
-    document.getElementById("result").innerHTML = resultHTML;
-    document.getElementById("progress").style.width = score+"%";
+function showPage(pageId) {
+    let sections = document.querySelectorAll(".section");
+    sections.forEach(sec => sec.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
 }
 </script>
 
 </body>
 </html>
-
